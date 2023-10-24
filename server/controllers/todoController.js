@@ -1,5 +1,4 @@
 const asyncHandler = require('express-async-handler')
-
 const Todo = require('../models/todoModel')
 
 // @desc    Get todos
@@ -7,7 +6,6 @@ const Todo = require('../models/todoModel')
 // @access  Private
 const getTodos = asyncHandler(async (req, res) => {
     const todos = await Todo.find()
-
     res.status(200).json({ todos })
 })
 
@@ -20,11 +18,9 @@ const setTodos = asyncHandler(async (req, res) => {
         throw new Error('Please add a text field')
     }
 
-    const todo = await Todo.create({
-        text: req.body.text,
-    })
-
+    const todo = await Todo.create({ text: req.body.text, })
     res.status(200).json(todo)
+
 })
 
 // @desc    Update todos

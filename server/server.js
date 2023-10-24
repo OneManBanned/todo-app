@@ -11,9 +11,14 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/', require('./routes/routes'))
+app.use('/app/todos', require('./routes/todoRoutes'))
+app.use('/app/users', require('./routes/userRoutes'))
 
 app.use(errorHandler)
+
+// app.get('/app', (req, res) => {
+//     res.json({ "Hello": "world" })
+// })
 
 app.listen(port, () => {
     console.log(`server is running on port ${port}`)
