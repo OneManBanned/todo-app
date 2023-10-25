@@ -16,10 +16,6 @@ app.use('/app/users', require('./routes/userRoutes'))
 
 app.use(errorHandler)
 
-// app.get('/app', (req, res) => {
-//     res.json({ "Hello": "world" })
-// })
-
 app.listen(port, () => {
     console.log(`server is running on port ${port}`)
 })

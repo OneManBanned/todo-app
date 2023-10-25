@@ -1,11 +1,12 @@
 const asyncHandler = require('express-async-handler')
 const Todo = require('../models/todoModel')
+const User = require('../models/userModel')
 
 // @desc    Get todos
 // @route   GET /
 // @access  Private
 const getTodos = asyncHandler(async (req, res) => {
-    const todos = await Todo.find()
+    const todos = await Todo.find({ user: req.user.id })
     res.status(200).json({ todos })
 })
 
@@ -18,7 +19,10 @@ const setTodos = asyncHandler(async (req, res) => {
         throw new Error('Please add a text field')
     }
 
-    const todo = await Todo.create({ text: req.body.text, })
+    const todo = await Todo.create({
+        text: req.body.text,
+        user: req.user.id,
+    })
     res.status(200).json(todo)
 
 })
@@ -34,7 +38,25 @@ const updateTodos = asyncHandler(async (req, res) => {
         throw new Error('Todo no found')
     }
 
-    const updatedTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, { new: true, })
+    const user = await User.findById(req.user.id)
+
+    // Check for user
+    if (!user) {
+        res.status(401)
+        throw new Error('User not found')
+    }
+
+    // Make sure the logged in the user matches the goal user
+    if (todo.user.toString() !== user.id) {
+        res.status(401)
+        throw new Error('User not authorized')
+    }
+
+    const updatedTodo = await Todo.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true, })
+
     res.status(200).json(updatedTodo)
 })
 
@@ -47,6 +69,20 @@ const deleteTodos = asyncHandler(async (req, res) => {
     if (!todo) {
         res.status(400)
         throw new Error('Todo no found')
+    }
+
+    const user = await User.findById(req.user.id)
+
+    // Check for user
+    if (!user) {
+        res.status(401)
+        throw new Error('User not found')
+    }
+
+    // Make sure the logged in the user matches the goal user
+    if (todo.user.toString() !== user.id) {
+        res.status(401)
+        throw new Error('User not authorized')
     }
 
     await Todo.findByIdAndRemove(req.params.id)
