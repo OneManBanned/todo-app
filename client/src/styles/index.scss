@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+    margin-right: 1rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    min-width: 100%;
+}
+
+.logo {
+    margin-left: 1rem;
+}
+
+ul {
+    margin-left: auto;
+    display: flex;
+}

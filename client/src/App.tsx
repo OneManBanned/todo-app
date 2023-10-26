@@ -1,28 +1,25 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Dashboard from './pages/Dashboard'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import '../../dist/css/index.css'
+import Header from './components/Header'
 
 function App() {
-  const [data, setData] = useState<any>(undefined)
-  const [fetchData, setFetchData] = useState<boolean>(false)
-
-  useEffect(() => {
-    fetch('/app/')
-      .then(res => res.json())
-      .then(data => setData(data))
-  }, [fetchData])
 
   return (
-    <main>
-      <h1>Hello World</h1>
-      <form action="/app/" method='POST'>
-        <label htmlFor="text">Add todo</label>
-        <input type="text" name='text' />
-        <button type='submit' onClick={() => setFetchData(prev => !prev)}>submit</button>
-      </form>
-      {data && data.todos.map((i: any, k: any) => {
-        return (<p key={k} >{i.text}</p>)
-      })}
-    </main>
+    <>
+      <Router>
+        <div className='container'>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Dashboard />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+          </Routes>
+        </div>
+      </Router>
+    </>
   )
 }
 
