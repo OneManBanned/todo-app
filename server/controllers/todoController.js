@@ -38,16 +38,14 @@ const updateTodos = asyncHandler(async (req, res) => {
         throw new Error('Todo no found')
     }
 
-    const user = await User.findById(req.user.id)
-
     // Check for user
-    if (!user) {
+    if (!req.user) {
         res.status(401)
         throw new Error('User not found')
     }
 
     // Make sure the logged in the user matches the goal user
-    if (todo.user.toString() !== user.id) {
+    if (todo.user.toString() !== req.user.id) {
         res.status(401)
         throw new Error('User not authorized')
     }
@@ -71,16 +69,14 @@ const deleteTodos = asyncHandler(async (req, res) => {
         throw new Error('Todo no found')
     }
 
-    const user = await User.findById(req.user.id)
-
     // Check for user
-    if (!user) {
+    if (!req.user) {
         res.status(401)
         throw new Error('User not found')
     }
 
     // Make sure the logged in the user matches the goal user
-    if (todo.user.toString() !== user.id) {
+    if (todo.user.toString() !== req.user.id) {
         res.status(401)
         throw new Error('User not authorized')
     }
