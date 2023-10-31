@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import TodoForm from "../components/TodoForm"
 import Spinner from '../components/Spinner'
+import TodoItem from "../components/TodoItem"
 import { reset, getTodos } from '../features/todos/todosSlice'
 
 function Dashboard() {
@@ -37,6 +38,16 @@ function Dashboard() {
                 <p>Goals Dashborad</p>
             </section>
             <TodoForm />
+            <section className="content">
+                {todos.length > 0 ? (
+                    <div className="goals">
+                        {todos.map(todo => (
+                            <TodoItem key={todo._id} todo={todo} />
+                        ))}
+                    </div>
+                )
+                    : (<h3>You have not set any todos</h3>)}
+            </section>
         </>
     )
 }

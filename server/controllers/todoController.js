@@ -82,7 +82,7 @@ const deleteTodos = asyncHandler(async (req, res) => {
     }
 
     await Todo.findByIdAndRemove(req.params.id)
-    res.status(200).json()
+    res.status(200).json({ id: req.params.id })
 })
 
 module.exports = {
