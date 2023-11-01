@@ -2,13 +2,15 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { logout, reset } from './features/auth/authSlice'
+import { logout, reset } from '../features/auth/authSlice'
+import { change } from '../features/theme/themeSlice'
 
 
 function Header() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user } = useSelector((state) => state.auth)
+    const { theme } = useSelector((state) => state.theme)
 
     const onLogout = () => {
         dispatch(logout())
@@ -20,6 +22,10 @@ function Header() {
         <header className="header">
             <div className="logo">
                 <Link to='/'>GoalSetter</Link>
+            </div>
+            <div>
+                <label htmlFor="theme"></label>
+                <input type="checkbox" id="theme" onClick={() => dispatch(change())} />
             </div>
             <ul>
                 {user ? (<li>
