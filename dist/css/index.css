@@ -1,7 +1,7 @@
 .theme-light {
-  background-color: red;
+  background-color: hsl(0, 0%, 98%);
 }
 
 .theme-dark {
-  background-color: pink;
+  background-color: hsl(235, 21%, 11%);
 }/*# sourceMappingURL=index.css.map */

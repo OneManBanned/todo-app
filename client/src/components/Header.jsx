@@ -24,8 +24,9 @@ function Header() {
                 <Link to='/'>GoalSetter</Link>
             </div>
             <div>
-                <label htmlFor="theme"></label>
-                <input type="checkbox" id="theme" onClick={() => dispatch(change())} />
+                <label htmlFor="darkMode"></label>
+                <input type="checkbox" id="darkMode"
+                    onClick={() => dispatch(change())} />
             </div>
             <ul>
                 {user ? (<li>

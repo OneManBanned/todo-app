@@ -1,7 +1,9 @@
+@use '../abstracts/theme' as *;
+
 .theme-light {
-    background-color: red;
+    background-color: $background-light;
 }
 
 .theme-dark {
-    background-color: pink;
+    background-color: $background-dark;
 }
