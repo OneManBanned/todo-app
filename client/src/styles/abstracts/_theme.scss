@@ -1,19 +1,48 @@
 // ### Light Theme
+$themes: (
+    light: (bgImgDesktop: 'images/bg-desktop-light.jpg',
+        bgImgMobile: 'images/bg-mobile-light.jpg',
+        bg: hsl(0, 0%, 98%),
+        bgContainer: white,
+        // hsl(236, 33%, 92%
+        // - Light Grayish Blue: hsl(233, 11%, 84%)
+        // - Dark Grayish Blue: hsl(236, 9%, 61%)
+        // - Very Dark Grayish Blue: hsl(235, 19%, 35%)
 
-// - Very Light Gray: hsl(0, 0%, 98%)
-$background-light: hsl(0, 0%, 98%);
-// - Very Light Grayish Blue: hsl(236, 33%, 92%)
-// - Light Grayish Blue: hsl(233, 11%, 84%)
-// - Dark Grayish Blue: hsl(236, 9%, 61%)
-// - Very Dark Grayish Blue: hsl(235, 19%, 35%)
+        // ### Dark Theme
+    ),
+    dark: (bgImgDesktop: 'images/bg-desktop-dark.jpg',
+        bgImgMobile: 'images/bg-mobile-dark.jpg',
+        bg: hsl(235, 21%, 11%),
+        bgContainer: hsl(235, 24%, 19%),
+        // - Light Grayish Blue: hsl(234, 39%, 85%)
+        // - Light Grayish Blue (hover): hsl(236, 33%, 92%)
+        // - Dark Grayish Blue: hsl(234, 11%, 52%)
+        // - Very Dark Grayish Blue: hsl(233, 14%, 35%)
+        // - Very Dark Grayish Blue: hsl(237, 14%, 26%)
+    ),
+);
 
-// ### Dark Theme
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: (
+                ) !global;
 
-// - Very Dark Blue: hsl(235, 21%, 11%)
-$background-dark: hsl(235, 21%, 11%);
-// - Very Dark Desaturated Blue: hsl(235, 24%, 19%)
-// - Light Grayish Blue: hsl(234, 39%, 85%)
-// - Light Grayish Blue (hover): hsl(236, 33%, 92%)
-// - Dark Grayish Blue: hsl(234, 11%, 52%)
-// - Very Dark Grayish Blue: hsl(233, 14%, 35%)
-// - Very Dark Grayish Blue: hsl(237, 14%, 26%)
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}'
+                );
+            $theme-map: map-merge($theme-map,
+                    ($key: $value,
+                    )) !global;
+        }
+
+        @content;
+        $theme-map: null !global;
+    }
+}
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}

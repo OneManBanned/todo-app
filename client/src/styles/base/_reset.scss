@@ -1,9 +1,26 @@
-@use '../abstracts/theme' as *;
+@use '../abstracts/typography' as *;
 
-.theme-light {
-    background-color: $background-light;
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
 }
 
-.theme-dark {
-    background-color: $background-dark;
+h1 {
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    font-size: 100%;
 }
+
+// .container {
+//     @include themify($themes) {
+//         background-color: themed('background');
+//     }
+// }

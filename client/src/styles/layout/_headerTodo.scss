@@ -1,0 +1,35 @@
+@use '../abstracts/typography' as *;
+@use '../abstracts/theme' as *;
+
+.headerTodo {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        text-decoration: none;
+        font-weight: $bold;
+        font-size: clamp(1rem, 0.2539rem + 2.8764vw, 5rem);
+        letter-spacing: clamp(0.4rem, 0.1202rem + 1.0787vw, 1.9rem);
+        padding-top: 0.2em;
+        text-transform: uppercase;
+    }
+
+    div {
+
+        label {
+
+            cursor: pointer;
+
+            img {
+                width: clamp(1rem, 0.627rem + 1.4382vw, 3rem);
+            }
+        }
+
+
+        input {
+            appearance: none;
+        }
+    }
+}

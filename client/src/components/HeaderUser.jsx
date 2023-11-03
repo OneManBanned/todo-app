@@ -1,16 +1,13 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
-import { change } from '../features/theme/themeSlice'
 
-
-function Header() {
+function HeaderUser() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user } = useSelector((state) => state.auth)
-    const { theme } = useSelector((state) => state.theme)
 
     const onLogout = () => {
         dispatch(logout())
@@ -19,15 +16,7 @@ function Header() {
     }
 
     return (
-        <header className="header">
-            <div className="logo">
-                <Link to='/'>GoalSetter</Link>
-            </div>
-            <div>
-                <label htmlFor="darkMode"></label>
-                <input type="checkbox" id="darkMode"
-                    onClick={() => dispatch(change())} />
-            </div>
+        <header className="headerUser">
             <ul>
                 {user ? (<li>
                     <button className="btn" onClick={onLogout}>
@@ -55,4 +44,4 @@ function Header() {
     )
 }
 
-export default Header
+export default HeaderUser

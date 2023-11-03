@@ -1,0 +1,22 @@
+@use '../abstracts/theme' as *;
+@use '../abstracts/breakpoints' as *;
+
+.background {
+    @include themify($themes) {
+        background: top/100% themed('bg') url(themed('bgImgMobile')) no-repeat;
+    }
+
+    min-height: 100vh;
+
+    @include desktop {
+        @include themify($themes) {
+            background: top/100% themed('bg') url(themed('bgImgDesktop')) no-repeat;
+        }
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+}

@@ -1,7 +1,83 @@
-.theme-light {
-  background-color: hsl(0, 0%, 98%);
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
 }
 
-.theme-dark {
-  background-color: hsl(235, 21%, 11%);
+h1 {
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+.background {
+  min-height: 100vh;
+}
+.theme-light .background {
+  background: top/100% hsl(0, 0%, 98%) url("images/bg-mobile-light.jpg") no-repeat;
+}
+.theme-dark .background {
+  background: top/100% hsl(235, 21%, 11%) url("images/bg-mobile-dark.jpg") no-repeat;
+}
+@media (min-width: 25.938rem) {
+  .background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .theme-light .background {
+    background: top/100% hsl(0, 0%, 98%) url("images/bg-desktop-light.jpg") no-repeat;
+  }
+  .theme-dark .background {
+    background: top/100% hsl(235, 21%, 11%) url("images/bg-desktop-dark.jpg") no-repeat;
+  }
+}
+
+.container {
+  width: 40%;
+}
+
+.headerUser {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.headerUser ul li {
+  display: flex;
+  margin-right: 1rem;
+}
+
+.headerTodo {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.headerTodo .logo {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(1rem, 0.2539rem + 2.8764vw, 5rem);
+  letter-spacing: clamp(0.4rem, 0.1202rem + 1.0787vw, 1.9rem);
+  padding-top: 0.2em;
+  text-transform: uppercase;
+}
+.headerTodo div label {
+  cursor: pointer;
+}
+.headerTodo div label img {
+  width: clamp(1rem, 0.627rem + 1.4382vw, 3rem);
+}
+.headerTodo div input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }/*# sourceMappingURL=index.css.map */

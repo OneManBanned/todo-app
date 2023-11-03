@@ -1,0 +1,9 @@
+@use '../abstracts/theme' as *;
+
+.container {
+    // @include themify($themes) {
+    //     background-color: themed('bgContainer');
+    // }
+
+    width: 40%;
+}
