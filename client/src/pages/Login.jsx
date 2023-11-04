@@ -31,35 +31,22 @@ function Login() {
 
     const onSubmit = (e) => {
         e.preventDefault()
-
-        const userData = {
-            name, password
-        }
-
+        const userData = { name, password }
         dispatch(login(userData))
     }
 
     useEffect(() => {
-        if (isError) {
-            toast.error(message)
-        }
-        if (isSuccess || user) {
-            navigate('/')
-        }
+        if (isError) { toast.error(message) }
+        if (isSuccess || user) { navigate('/') }
         dispatch(reset())
     }, [user, isError, isSuccess, message, navigate, dispatch])
 
-    if (isLoading) {
-        return <Spinner />
-    }
+    if (isLoading) { return <Spinner /> }
 
     return (
         <>
             <section className="heading">
-                <h1>
-                    <FaSignInAlt />Login
-                </h1>
-                <p>Login and start setting goals</p>
+                <h2> Login </h2>
             </section>
             <section className="form">
                 <form onSubmit={onSubmit}>
@@ -70,7 +57,7 @@ function Login() {
                             id="name"
                             name='name'
                             value={name}
-                            placeholder='enter your name'
+                            placeholder='Enter your name'
                             onChange={onChange} />
                     </div>
                     <div className="form-group">
@@ -80,7 +67,7 @@ function Login() {
                             id="password"
                             name='password'
                             value={password}
-                            placeholder='enter your password'
+                            placeholder='Enter your password'
                             onChange={onChange} />
                     </div>
                     <div className="form-group">

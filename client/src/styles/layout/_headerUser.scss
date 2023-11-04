@@ -1,13 +1,28 @@
+@use '../abstracts/breakpoints' as *;
+
 .headerUser {
-    position: absolute;
-    top: 0;
-    right: 0;
+    width: 90%;
+    margin-top: 1rem;
+
+    @include desktop {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: unset;
+    }
 
     ul {
+        display: flex;
+        justify-content: space-between;
+
+        @include desktop {
+            display: block;
+        }
 
         li {
-            display: flex;
-            margin-right: 1rem;
+            @include desktop {
+                margin-right: 1rem;
+            }
         }
     }
 }

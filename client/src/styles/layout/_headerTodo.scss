@@ -1,5 +1,6 @@
 @use '../abstracts/typography' as *;
 @use '../abstracts/theme' as *;
+@use '../abstracts/breakpoints' as *;
 
 .headerTodo {
     display: flex;
@@ -10,10 +11,15 @@
     .logo {
         text-decoration: none;
         font-weight: $bold;
-        font-size: clamp(1rem, 0.2539rem + 2.8764vw, 5rem);
-        letter-spacing: clamp(0.4rem, 0.1202rem + 1.0787vw, 1.9rem);
         padding-top: 0.2em;
         text-transform: uppercase;
+        font-size: clamp(1.25rem, 0.2052rem + 5.9701vw, 1.75rem);
+        letter-spacing: .5rem;
+
+        @include desktop {
+            font-size: clamp(1rem, 0.2539rem + 2.8764vw, 5rem);
+            letter-spacing: clamp(0.4rem, 0.1202rem + 1.0787vw, 1.9rem);
+        }
     }
 
     div {
@@ -23,7 +29,11 @@
             cursor: pointer;
 
             img {
-                width: clamp(1rem, 0.627rem + 1.4382vw, 3rem);
+                width: clamp(1.25rem, 0.7276rem + 2.9851vw, 1.5rem);
+
+                @include desktop {
+                    width: clamp(1rem, 0.627rem + 1.4382vw, 3rem);
+                }
             }
         }
 

@@ -19,6 +19,9 @@ h1 {
 }
 
 .background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
 }
 .theme-light .background {
@@ -28,12 +31,6 @@ h1 {
   background: top/100% hsl(235, 21%, 11%) url("images/bg-mobile-dark.jpg") no-repeat;
 }
 @media (min-width: 25.938rem) {
-  .background {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
   .theme-light .background {
     background: top/100% hsl(0, 0%, 98%) url("images/bg-desktop-light.jpg") no-repeat;
   }
@@ -43,17 +40,44 @@ h1 {
 }
 
 .container {
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  margin-top: 3rem;
+}
+@media (min-width: 25.938rem) {
+  .container {
+    width: 40%;
+    min-width: 23.5rem;
+  }
 }
 
 .headerUser {
-  position: absolute;
-  top: 0;
-  right: 0;
+  width: 90%;
+  margin-top: 1rem;
 }
-.headerUser ul li {
+@media (min-width: 25.938rem) {
+  .headerUser {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: unset;
+  }
+}
+.headerUser ul {
   display: flex;
-  margin-right: 1rem;
+  justify-content: space-between;
+}
+@media (min-width: 25.938rem) {
+  .headerUser ul {
+    display: block;
+  }
+}
+@media (min-width: 25.938rem) {
+  .headerUser ul li {
+    margin-right: 1rem;
+  }
 }
 
 .headerTodo {
@@ -65,19 +89,92 @@ h1 {
 .headerTodo .logo {
   text-decoration: none;
   font-weight: 700;
-  font-size: clamp(1rem, 0.2539rem + 2.8764vw, 5rem);
-  letter-spacing: clamp(0.4rem, 0.1202rem + 1.0787vw, 1.9rem);
   padding-top: 0.2em;
   text-transform: uppercase;
+  font-size: clamp(1.25rem, 0.2052rem + 5.9701vw, 1.75rem);
+  letter-spacing: 0.5rem;
+}
+@media (min-width: 25.938rem) {
+  .headerTodo .logo {
+    font-size: clamp(1rem, 0.2539rem + 2.8764vw, 5rem);
+    letter-spacing: clamp(0.4rem, 0.1202rem + 1.0787vw, 1.9rem);
+  }
 }
 .headerTodo div label {
   cursor: pointer;
 }
 .headerTodo div label img {
-  width: clamp(1rem, 0.627rem + 1.4382vw, 3rem);
+  width: clamp(1.25rem, 0.7276rem + 2.9851vw, 1.5rem);
+}
+@media (min-width: 25.938rem) {
+  .headerTodo div label img {
+    width: clamp(1rem, 0.627rem + 1.4382vw, 3rem);
+  }
 }
 .headerTodo div input {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+}
+
+section h2 {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+}
+section h2 .icon {
+  margin-right: 1rem;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+}
+.form * {
+  width: 100%;
+  padding-block: 0.9rem;
+  border-radius: 0.4rem;
+  border: none;
+}
+.form input {
+  padding-inline-start: 1rem;
+}
+.theme-light .form input {
+  box-shadow: 0px 10px 25px hsl(236, 33%, 92%);
+}
+.theme-dark .form input {
+  box-shadow: 0px 10px 25px none;
+}
+.theme-light .form input,
+.theme-light .form button {
+  background-color: white;
+}
+.theme-dark .form input,
+.theme-dark .form button {
+  background-color: hsl(235, 24%, 19%);
+}
+.theme-light .form input::-moz-placeholder {
+  color: hsl(235, 19%, 35%);
+}
+.theme-light .form input::placeholder,
+.theme-light .form input {
+  color: hsl(235, 19%, 35%);
+}
+.theme-dark .form input::-moz-placeholder {
+  color: hsl(234, 39%, 85%);
+}
+.theme-dark .form input::placeholder,
+.theme-dark .form input {
+  color: hsl(234, 39%, 85%);
+}
+.form button {
+  font-weight: 700;
+}
+.theme-light .form button {
+  color: hsl(236, 9%, 61%);
+  box-shadow: 0px 10px 25px hsl(236, 33%, 92%);
+}
+.theme-dark .form button {
+  color: hsl(233, 14%, 35%);
+  box-shadow: 0px 10px 25px none;
 }/*# sourceMappingURL=index.css.map */

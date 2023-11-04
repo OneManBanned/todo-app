@@ -1,9 +1,16 @@
 @use '../abstracts/theme' as *;
+@use '../abstracts/breakpoints' as *;
 
 .container {
-    // @include themify($themes) {
-    //     background-color: themed('bgContainer');
-    // }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    margin-top: 3rem;
 
-    width: 40%;
+    @include desktop {
+        width: 40%;
+        min-width: 23.5rem;
+    }
+
 }

@@ -60,10 +60,7 @@ function Register() {
     return (
         <>
             <section className="heading">
-                <h1>
-                    <FaUser />Register
-                </h1>
-                <p>Please create an account</p>
+                <h2> Register </h2>
             </section>
             <section className="form">
                 <form onSubmit={onSubmit} >
@@ -74,7 +71,7 @@ function Register() {
                             id="name"
                             name='name'
                             value={name}
-                            placeholder='enter your name'
+                            placeholder='Enter your name'
                             onChange={onChange} />
                     </div>
                     <div className="form-group">
@@ -84,7 +81,7 @@ function Register() {
                             id="password"
                             name='password'
                             value={password}
-                            placeholder='enter your password'
+                            placeholder='Enter your password'
                             onChange={onChange} />
                     </div>
                     <div className="form-group">
@@ -94,7 +91,7 @@ function Register() {
                             id="password2"
                             name='password2'
                             value={password2}
-                            placeholder='enter your password2'
+                            placeholder='Re-enter your password'
                             onChange={onChange} />
                     </div>
                     <div className="form-group">

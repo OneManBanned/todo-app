@@ -1,0 +1,57 @@
+@use '../abstracts/theme' as *;
+@use '../abstracts/typography' as *;
+
+section {
+    h2 {
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+
+        .icon {
+            margin-right: 1rem;
+        }
+    }
+}
+
+.form {
+    width: 100%;
+    display: flex;
+
+    * {
+        width: 100%;
+        padding-block: .9rem;
+        border-radius: .4rem;
+        border: none;
+    }
+
+    input {
+        padding-inline-start: 1rem;
+
+        @include themify($themes) {
+            box-shadow: 0px 10px 25px themed('shadow');
+        }
+    }
+
+    input,
+    button {
+        @include themify($themes) {
+            background-color: themed('bgContainer');
+        }
+    }
+
+    input::placeholder,
+    input {
+        @include themify($themes) {
+            color: themed('text');
+        }
+    }
+
+    button {
+        @include themify($themes) {
+            color: themed('btnText');
+            box-shadow: 0px 10px 25px themed('shadow');
+        }
+
+        font-weight: 700;
+    }
+}
