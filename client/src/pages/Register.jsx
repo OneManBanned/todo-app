@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { reset, register } from '../features/auth/authSlice'
-import { FaUser } from 'react-icons/fa'
 import Spinner from '../components/Spinner'
 
 function Register() {
@@ -59,9 +58,6 @@ function Register() {
 
     return (
         <>
-            <section className="heading">
-                <h2> Register </h2>
-            </section>
             <section className="form">
                 <form onSubmit={onSubmit} >
                     <div className="form-group">

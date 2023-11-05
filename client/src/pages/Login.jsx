@@ -45,9 +45,6 @@ function Login() {
 
     return (
         <>
-            <section className="heading">
-                <h2> Login </h2>
-            </section>
             <section className="form">
                 <form onSubmit={onSubmit}>
                     <div className="form-group">

@@ -30,7 +30,7 @@ h1 {
 .theme-dark .background {
   background: top/100% hsl(235, 21%, 11%) url("images/bg-mobile-dark.jpg") no-repeat;
 }
-@media (min-width: 25.938rem) {
+@media (min-width: 30rem) {
   .theme-light .background {
     background: top/100% hsl(0, 0%, 98%) url("images/bg-desktop-light.jpg") no-repeat;
   }
@@ -46,10 +46,10 @@ h1 {
   width: 90%;
   margin-top: 3rem;
 }
-@media (min-width: 25.938rem) {
+@media (min-width: 30rem) {
   .container {
     width: 40%;
-    min-width: 23.5rem;
+    min-width: 29rem;
   }
 }
 
@@ -57,7 +57,7 @@ h1 {
   width: 90%;
   margin-top: 1rem;
 }
-@media (min-width: 25.938rem) {
+@media (min-width: 30rem) {
   .headerUser {
     position: absolute;
     top: 0;
@@ -69,12 +69,12 @@ h1 {
   display: flex;
   justify-content: space-between;
 }
-@media (min-width: 25.938rem) {
+@media (min-width: 30rem) {
   .headerUser ul {
     display: block;
   }
 }
-@media (min-width: 25.938rem) {
+@media (min-width: 30rem) {
   .headerUser ul li {
     margin-right: 1rem;
   }
@@ -86,7 +86,12 @@ h1 {
   justify-content: space-between;
   align-items: center;
 }
-.headerTodo .logo {
+@media (min-width: 30rem) {
+  .headerTodo {
+    margin-block-start: 1.5rem;
+  }
+}
+.headerTodo h1 {
   text-decoration: none;
   font-weight: 700;
   padding-top: 0.2em;
@@ -94,8 +99,8 @@ h1 {
   font-size: clamp(1.25rem, 0.2052rem + 5.9701vw, 1.75rem);
   letter-spacing: 0.5rem;
 }
-@media (min-width: 25.938rem) {
-  .headerTodo .logo {
+@media (min-width: 30rem) {
+  .headerTodo h1 {
     font-size: clamp(1rem, 0.2539rem + 2.8764vw, 5rem);
     letter-spacing: clamp(0.4rem, 0.1202rem + 1.0787vw, 1.9rem);
   }
@@ -106,7 +111,7 @@ h1 {
 .headerTodo div label img {
   width: clamp(1.25rem, 0.7276rem + 2.9851vw, 1.5rem);
 }
-@media (min-width: 25.938rem) {
+@media (min-width: 30rem) {
   .headerTodo div label img {
     width: clamp(1rem, 0.627rem + 1.4382vw, 3rem);
   }
@@ -117,30 +122,23 @@ h1 {
           appearance: none;
 }
 
-section h2 {
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
-}
-section h2 .icon {
-  margin-right: 1rem;
-}
-
 .form {
   width: 100%;
   display: flex;
+  margin-block-start: 3rem;
 }
 .form * {
   width: 100%;
-  padding-block: 0.9rem;
-  border-radius: 0.4rem;
-  border: none;
 }
 .form input {
-  padding-inline-start: 1rem;
+  padding-inline-start: 5%;
+  padding-block: 4%;
+  border-radius: 0.4rem;
+  border: none;
+  margin-bottom: 1rem;
 }
 .theme-light .form input {
-  box-shadow: 0px 10px 25px hsl(236, 33%, 92%);
+  box-shadow: 0px 10px 25px hsla(236, 33%, 92%, 0.25);
 }
 .theme-dark .form input {
   box-shadow: 0px 10px 25px none;
@@ -167,14 +165,33 @@ section h2 .icon {
 .theme-dark .form input {
   color: hsl(234, 39%, 85%);
 }
+@media (min-width: 30rem) {
+  .form input::-moz-placeholder {
+    font-size: clamp(1rem, 0.7778rem + 0.7407vw, 2rem);
+  }
+  .form input::placeholder,
+  .form input {
+    font-size: clamp(1rem, 0.7778rem + 0.7407vw, 2rem);
+  }
+}
 .form button {
+  cursor: pointer;
+  border-radius: 0.4rem;
+  border: none;
+  margin-top: 1.5rem;
+  padding-block: 4%;
   font-weight: 700;
 }
 .theme-light .form button {
   color: hsl(236, 9%, 61%);
-  box-shadow: 0px 10px 25px hsl(236, 33%, 92%);
+  box-shadow: 0px 10px 25px hsla(236, 33%, 92%, 0.25);
 }
 .theme-dark .form button {
   color: hsl(233, 14%, 35%);
   box-shadow: 0px 10px 25px none;
+}
+@media (min-width: 30rem) {
+  .form button {
+    font-size: clamp(1rem, 0.7778rem + 0.7407vw, 2rem);
+  }
 }/*# sourceMappingURL=index.css.map */
