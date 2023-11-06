@@ -15,14 +15,21 @@
         display: flex;
         justify-content: space-between;
 
-        @include desktop {
-            display: block;
-        }
-
         li {
+
             @include desktop {
                 margin-right: 1rem;
             }
+
+            span:first-child {
+                margin-right: .5rem;
+            }
         }
+
+        button {
+            background-color: transparent;
+            border: none;
+        }
+
     }
 }

@@ -1,0 +1,23 @@
+.todoForm {
+    background-color: red;
+}
+
+.todos {
+    background-color: red;
+}
+
+.todo {
+    display: flex;
+
+    >* {
+        margin-inline-start: .5rem;
+    }
+
+    button {
+        margin-left: auto;
+        margin-right: .5rem;
+        background-color: transparent;
+        border: none;
+
+    }
+}

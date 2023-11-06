@@ -21,6 +21,7 @@ const setTodos = asyncHandler(async (req, res) => {
 
     const todo = await Todo.create({
         text: req.body.text,
+        completed: req.body.completed,
         user: req.user.id,
     })
     res.status(200).json(todo)

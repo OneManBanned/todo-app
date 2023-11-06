@@ -70,14 +70,16 @@ h1 {
   justify-content: space-between;
 }
 @media (min-width: 30rem) {
-  .headerUser ul {
-    display: block;
-  }
-}
-@media (min-width: 30rem) {
   .headerUser ul li {
     margin-right: 1rem;
   }
+}
+.headerUser ul li span:first-child {
+  margin-right: 0.5rem;
+}
+.headerUser ul button {
+  background-color: transparent;
+  border: none;
 }
 
 .headerTodo {
@@ -132,9 +134,9 @@ h1 {
 }
 .form input {
   padding-inline-start: 5%;
-  padding-block: 4%;
   border-radius: 0.4rem;
   border: none;
+  padding-block: 5%;
   margin-bottom: 1rem;
 }
 .theme-light .form input {
@@ -142,6 +144,11 @@ h1 {
 }
 .theme-dark .form input {
   box-shadow: 0px 10px 25px none;
+}
+@media (min-width: 30rem) {
+  .form input {
+    padding-block: 4%;
+  }
 }
 .theme-light .form input,
 .theme-light .form button {
@@ -194,4 +201,25 @@ h1 {
   .form button {
     font-size: clamp(1rem, 0.7778rem + 0.7407vw, 2rem);
   }
+}
+
+.todoForm {
+  background-color: red;
+}
+
+.todos {
+  background-color: red;
+}
+
+.todo {
+  display: flex;
+}
+.todo > * {
+  margin-inline-start: 0.5rem;
+}
+.todo button {
+  margin-left: auto;
+  margin-right: 0.5rem;
+  background-color: transparent;
+  border: none;
 }/*# sourceMappingURL=index.css.map */

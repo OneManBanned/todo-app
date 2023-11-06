@@ -9,6 +9,10 @@ const todoSchema = mongoose.Schema({
     text: {
         type: String,
         required: [true, 'Please add a todo']
+    },
+    completed: {
+        type: Boolean,
+        require: true,
     }
 }, {
     timestamps: true,

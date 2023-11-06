@@ -69,7 +69,6 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route Get /api/users/me
 // @access Private
 const getMe = asyncHandler(async (req, res) => {
-
     res.status(200).json(req.user)
 })
 
