@@ -7,11 +7,10 @@ const createTodo = async (todoData, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
-        }
+        },
     }
 
     const response = await axios.post(API_URL, todoData, config)
-
     return response.data
 }
 
@@ -36,14 +35,32 @@ const deleteTodo = async (todoId, token) => {
     }
 
     const response = await axios.delete(API_URL + todoId, config)
-    console.log(response.data)
+    console.log(response)
+    return response.data
+}
+
+const deleteManyTodos = async (todos, token) => {
+
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        data: {
+            Todos: todos
+        }
+
+    }
+
+    const response = await axios.delete(API_URL, todos, config)
+    console.log(response)
     return response.data
 }
 
 const todoService = {
     createTodo,
     getTodos,
-    deleteTodo
+    deleteTodo,
+    deleteManyTodos
 }
 
 export default todoService

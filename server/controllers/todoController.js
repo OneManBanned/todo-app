@@ -67,7 +67,7 @@ const deleteTodos = asyncHandler(async (req, res) => {
 
     if (!todo) {
         res.status(400)
-        throw new Error('Todo no found')
+        throw new Error('Todo not found')
     }
 
     // Check for user
@@ -86,9 +86,27 @@ const deleteTodos = asyncHandler(async (req, res) => {
     res.status(200).json({ id: req.params.id })
 })
 
+const deleteManyTodos = asyncHandler(async (req, res) => {
+    // Check for user
+    if (!req.user) {
+        res.status(401)
+        throw new Error('User not found')
+    }
+
+    // Make sure the logged in the user matches the goal user
+    if (todo.user.toString() !== req.user.id) {
+        res.status(401)
+        throw new Error('User not authorized')
+    }
+
+    const todo = await Todo.deleteMany({ "completed": true })
+    res.status(200).json(todo)
+})
+
 module.exports = {
     getTodos,
     setTodos,
     updateTodos,
-    deleteTodos
+    deleteTodos,
+    deleteManyTodos
 }

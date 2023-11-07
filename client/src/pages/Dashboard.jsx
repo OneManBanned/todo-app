@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import TodoForm from "../components/TodoForm"
 import Spinner from '../components/Spinner'
 import TodoItem from "../components/TodoItem"
-import { reset, getTodos } from '../features/todos/todosSlice'
+import { reset, getTodos, deleteManyTodos } from '../features/todos/todosSlice'
 import { current } from "@reduxjs/toolkit"
 
 function Dashboard() {
@@ -46,7 +46,16 @@ function Dashboard() {
         if (display === 'completed') {
             setCurrentTodos(todos.filter(todo => todo.completed))
         }
+        activeCount()
     }, [display, todos])
+
+    const activeCount = () => todos.filter(todo => !todo.completed).length
+
+
+    const updateForm = (e) => {
+        e.preventDefault()
+        dispatch(deleteManyTodos(todos))
+    }
 
     if (isLoading) {
         return <Spinner />
@@ -62,40 +71,42 @@ function Dashboard() {
                             {currentTodos.map(todo => (
                                 <TodoItem key={todo._id} todo={todo} />
                             ))}
-                            <fieldset>
-                                <div>
-                                    <label htmlFor="all">all</label>
-                                    <input
-                                        type="radio"
-                                        name="display"
-                                        id="all"
-                                        value="all"
-                                        onChange={displayChange}
-                                        checked={display === 'all'} />
-                                </div>
-                                <div>
-                                    <label htmlFor="active">active</label>
-                                    <input
-                                        type="radio"
-                                        name="display"
-                                        id="active"
-                                        value="active"
-                                        onChange={displayChange}
-                                        checked={display === 'active'} />
-                                </div>
-                                <div>
-                                    <label htmlFor="completed">completed</label>
-                                    <input
-                                        type="radio"
-                                        name="display"
-                                        id="completed"
-                                        value="completed"
-                                        checked={display === 'completed'}
-                                        onChange={displayChange}
-                                    />
-                                </div>
-                            </fieldset>
                         </form>
+                        <p>{activeCount() == 1 ? `${activeCount()} item left` : `${activeCount()} items left`}</p>
+                        <fieldset>
+                            <div>
+                                <label htmlFor="all">all</label>
+                                <input
+                                    type="radio"
+                                    name="display"
+                                    id="all"
+                                    value="all"
+                                    onChange={displayChange}
+                                    checked={display === 'all'} />
+                            </div>
+                            <div>
+                                <label htmlFor="active">active</label>
+                                <input
+                                    type="radio"
+                                    name="display"
+                                    id="active"
+                                    value="active"
+                                    onChange={displayChange}
+                                    checked={display === 'active'} />
+                            </div>
+                            <div>
+                                <label htmlFor="completed">completed</label>
+                                <input
+                                    type="radio"
+                                    name="display"
+                                    id="completed"
+                                    value="completed"
+                                    checked={display === 'completed'}
+                                    onChange={displayChange}
+                                />
+                            </div>
+                        </fieldset>
+                        <button onClick={updateForm}>clear completed</button>
                     </div>
                 )
                     : (<h3>You have not set any todos</h3>)}

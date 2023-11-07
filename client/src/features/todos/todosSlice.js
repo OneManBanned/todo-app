@@ -55,6 +55,21 @@ export const deleteTodo = createAsyncThunk('todos/delete', async (id, thunkAPI) 
     }
 })
 
+export const deleteManyTodos = createAsyncThunk('todos/deleteMany', async (todos, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        return await todoService.deleteManyTodos(todos, token)
+    } catch (error) {
+        console.log(error)
+        const message = (error.response
+            && error.response.data
+            && error.response.data.message)
+            || error.message || error.toString()
+        // thinkAPI.rejectWithValue sends message as payload
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const todoSlice = createSlice({
     name: 'todo',
     initialState,
@@ -102,9 +117,20 @@ export const todoSlice = createSlice({
                 state.Error = true
                 state.message = action.payload
             })
-
+            .addCase(deleteManyTodos.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(deleteManyTodos.fulfilled, (state) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.todos = state.todos.filter((todo) => !todo.completed)
+            })
+            .addCase(deleteManyTodos.rejected, (state, action) => {
+                state.isLoading = false
+                state.Error = true
+                state.message = action.payload
+            })
     }
-
 })
 
 
