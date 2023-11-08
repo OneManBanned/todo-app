@@ -39,20 +39,28 @@ const deleteTodo = async (todoId, token) => {
     return response.data
 }
 
-const deleteManyTodos = async (todos, token) => {
+const deleteManyTodos = async (token) => {
 
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
         },
-        data: {
-            Todos: todos
-        }
-
     }
 
-    const response = await axios.delete(API_URL, todos, config)
-    console.log(response)
+    const response = await axios.delete(API_URL, config)
+    return response.data
+}
+
+const updateTodo = async ({ id, newTodo }, token) => {
+    console.log(newTodo)
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    }
+
+    const response = await axios.put(API_URL + id, newTodo, config)
+
     return response.data
 }
 
@@ -60,7 +68,8 @@ const todoService = {
     createTodo,
     getTodos,
     deleteTodo,
-    deleteManyTodos
+    deleteManyTodos,
+    updateTodo
 }
 
 export default todoService

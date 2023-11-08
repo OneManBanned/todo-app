@@ -55,12 +55,27 @@ export const deleteTodo = createAsyncThunk('todos/delete', async (id, thunkAPI) 
     }
 })
 
-export const deleteManyTodos = createAsyncThunk('todos/deleteMany', async (todos, thunkAPI) => {
+export const deleteManyTodos = createAsyncThunk('todos/deleteMany', async (_, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await todoService.deleteManyTodos(todos, token)
+        return await todoService.deleteManyTodos(token)
     } catch (error) {
         console.log(error)
+        const message = (error.response
+            && error.response.data
+            && error.response.data.message)
+            || error.message || error.toString()
+        // thinkAPI.rejectWithValue sends message as payload
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+// Update Todo
+export const updateTodo = createAsyncThunk('todos/update', async (data, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        return await todoService.updateTodo(data, token)
+    } catch (error) {
         const message = (error.response
             && error.response.data
             && error.response.data.message)
@@ -130,6 +145,21 @@ export const todoSlice = createSlice({
                 state.Error = true
                 state.message = action.payload
             })
+            .addCase(updateTodo.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(updateTodo.fulfilled, (state, { _id }) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.todos = state.todos
+                    .map((todo) => todo._id === _id ? action.payload : todo)
+            })
+            .addCase(updateTodo.rejected, (state, action) => {
+                state.isLoading = false
+                state.Error = true
+                state.message = action.payload
+            })
+
     }
 })
 

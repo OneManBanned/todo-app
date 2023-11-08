@@ -9,7 +9,12 @@ const { getTodos,
 
 const { protect } = require('../middleware/authMiddleware')
 
-router.route('/').get(protect, getTodos).post(protect, setTodos).delete(deleteManyTodos)
-router.route('/:id').delete(protect, deleteTodos).put(protect, updateTodos)
+router.route('/')
+    .get(protect, getTodos)
+    .post(protect, setTodos)
+    .delete(protect, deleteManyTodos)
+router.route('/:id')
+    .delete(protect, deleteTodos)
+    .put(updateTodos)
 
 module.exports = router

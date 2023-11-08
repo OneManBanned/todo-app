@@ -32,6 +32,7 @@ const setTodos = asyncHandler(async (req, res) => {
 // @route   Put /:id
 // @access  Private
 const updateTodos = asyncHandler(async (req, res) => {
+    console.log(req.body)
     const todo = await Todo.findById(req.params.id)
 
     if (!todo) {
@@ -39,30 +40,31 @@ const updateTodos = asyncHandler(async (req, res) => {
         throw new Error('Todo no found')
     }
 
-    // Check for user
-    if (!req.user) {
-        res.status(401)
-        throw new Error('User not found')
-    }
+    // // Check for user
+    // if (!req.user) {
+    //     res.status(401)
+    //     throw new Error('User not found')
+    // }
 
-    // Make sure the logged in the user matches the goal user
-    if (todo.user.toString() !== req.user.id) {
-        res.status(401)
-        throw new Error('User not authorized')
-    }
+    // // Make sure the logged in the user matches the goal user
+    // if (todo.user.toString() !== req.user.id) {
+    //     res.status(401)
+    //     throw new Error('User not authorized')
+    // }
 
     const updatedTodo = await Todo.findByIdAndUpdate(
         req.params.id,
         req.body,
         { new: true, })
 
-    res.status(200).json(updatedTodo)
+    res.status(200).json(todo)
 })
 
 // @desc    Delete todos
 // @route   DELETE /:id
 // @access  Private
 const deleteTodos = asyncHandler(async (req, res) => {
+
     const todo = await Todo.findById(req.params.id)
 
     if (!todo) {
@@ -87,19 +89,14 @@ const deleteTodos = asyncHandler(async (req, res) => {
 })
 
 const deleteManyTodos = asyncHandler(async (req, res) => {
+
     // Check for user
     if (!req.user) {
         res.status(401)
         throw new Error('User not found')
     }
 
-    // Make sure the logged in the user matches the goal user
-    if (todo.user.toString() !== req.user.id) {
-        res.status(401)
-        throw new Error('User not authorized')
-    }
-
-    const todo = await Todo.deleteMany({ "completed": true })
+    const todo = await Todo.deleteMany({ user: req.user._id, completed: true })
     res.status(200).json(todo)
 })
 

@@ -5,7 +5,6 @@ import TodoForm from "../components/TodoForm"
 import Spinner from '../components/Spinner'
 import TodoItem from "../components/TodoItem"
 import { reset, getTodos, deleteManyTodos } from '../features/todos/todosSlice'
-import { current } from "@reduxjs/toolkit"
 
 function Dashboard() {
 
@@ -18,9 +17,7 @@ function Dashboard() {
     const [display, setDisplay] = useState('all')
     const [currentTodos, setCurrentTodos] = useState(todos)
 
-    const displayChange = (e) => {
-        setDisplay(e.target.value)
-    }
+    const displayChange = (e) => setDisplay(e.target.value)
 
     useEffect(() => {
         if (isError) {
@@ -50,12 +47,6 @@ function Dashboard() {
     }, [display, todos])
 
     const activeCount = () => todos.filter(todo => !todo.completed).length
-
-
-    const updateForm = (e) => {
-        e.preventDefault()
-        dispatch(deleteManyTodos(todos))
-    }
 
     if (isLoading) {
         return <Spinner />
@@ -106,7 +97,7 @@ function Dashboard() {
                                 />
                             </div>
                         </fieldset>
-                        <button onClick={updateForm}>clear completed</button>
+                        <button onClick={() => dispatch(deleteManyTodos())}>clear completed</button>
                     </div>
                 )
                     : (<h3>You have not set any todos</h3>)}
