@@ -51,15 +51,14 @@ const deleteManyTodos = async (token) => {
     return response.data
 }
 
-const updateTodo = async ({ id, newTodo }, token) => {
-    console.log(newTodo)
+const updateTodo = async (id, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
         },
     }
 
-    const response = await axios.put(API_URL + id, newTodo, config)
+    const response = await axios.put(API_URL + id, config)
 
     return response.data
 }

@@ -1,26 +1,17 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { deleteTodo, updateTodo } from "../features/todos/todosSlice"
 
-export default function GoalItem({ todo }) {
+export default function TodoItem({ todo }) {
+
     const dispatch = useDispatch()
 
-    const [todoCompleted, setTodoCompleted] = useState(todo.completed)
-
-
-    const updateCurrentTodo = (e) => {
-        e.preventDefault()
-        console.log(todoCompleted)
-        setTodoCompleted(prev => !prev)
-        console.log(todoCompleted)
-        const id = todo._id
-        const newTodo = {
-            _id: todo._id,
-            text: todo.text,
-            completed: todoCompleted
-        }
-        dispatch(updateTodo({ id, newTodo }))
+    const updateCurrentTodo = () => {
+        dispatch(updateTodo(todo._id))
     }
+
+    useEffect(() => {
+    }, [todo])
 
     return (
         <div className='todo'>
@@ -30,7 +21,7 @@ export default function GoalItem({ todo }) {
                 type="checkbox"
                 id="completed"
                 onChange={updateCurrentTodo}
-                checked={todoCompleted}
+                checked={todo.completed}
             />
             <p>{todo.text}</p>
             <button onClick={() => dispatch(deleteTodo(todo._id))} className="close">X</button>

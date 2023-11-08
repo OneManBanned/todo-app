@@ -32,7 +32,7 @@ const setTodos = asyncHandler(async (req, res) => {
 // @route   Put /:id
 // @access  Private
 const updateTodos = asyncHandler(async (req, res) => {
-    console.log(req.body)
+
     const todo = await Todo.findById(req.params.id)
 
     if (!todo) {
@@ -54,10 +54,14 @@ const updateTodos = asyncHandler(async (req, res) => {
 
     const updatedTodo = await Todo.findByIdAndUpdate(
         req.params.id,
-        req.body,
+        {
+            text: todo.text,
+            completed: !todo.completed,
+            _id: req.params.id
+        },
         { new: true, })
 
-    res.status(200).json(todo)
+    res.status(200).json(updatedTodo)
 })
 
 // @desc    Delete todos
