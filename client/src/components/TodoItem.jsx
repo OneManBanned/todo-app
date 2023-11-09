@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { deleteTodo, updateTodo } from "../features/todos/todosSlice"
 

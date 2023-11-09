@@ -35,7 +35,6 @@ const deleteTodo = async (todoId, token) => {
     }
 
     const response = await axios.delete(API_URL + todoId, config)
-    console.log(response)
     return response.data
 }
 
@@ -58,7 +57,7 @@ const updateTodo = async (id, token) => {
         },
     }
 
-    const response = await axios.put(API_URL + id, config)
+    const response = await axios.put(API_URL + id, {}, config)
 
     return response.data
 }

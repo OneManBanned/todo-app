@@ -15,6 +15,6 @@ router.route('/')
     .delete(protect, deleteManyTodos)
 router.route('/:id')
     .delete(protect, deleteTodos)
-    .put(updateTodos)
+    .put(protect, updateTodos)
 
 module.exports = router

@@ -19,7 +19,7 @@ export default function todoForm() {
     }
 
     return (
-        <section className="form">
+        <section className="todo-form">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="completed" aria-label='completed'></label>
