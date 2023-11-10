@@ -55,53 +55,54 @@ function Dashboard() {
     return (
         <>
             <TodoForm />
-            <section className="content">
-                {todos.length > 0 ? (
-                    <div className="todos">
-                        <form>
-                            {currentTodos.map(todo => (
-                                <TodoItem key={todo._id} todo={todo} />
-                            ))}
-                        </form>
+            {todos.length > 0 ? (
+                <section className="content">
+                    <ul className="todos_list">
+                        {currentTodos.map(todo => (
+                            <TodoItem key={todo._id} todo={todo} />
+                        ))}
+                    </ul>
+                    <div className="todos_ui">
                         <p>{activeCount() == 1 ? `${activeCount()} item left` : `${activeCount()} items left`}</p>
-                        <fieldset>
-                            <div>
-                                <label htmlFor="all">all</label>
-                                <input
-                                    type="radio"
-                                    name="display"
-                                    id="all"
-                                    value="all"
-                                    onChange={displayChange}
-                                    checked={display === 'all'} />
-                            </div>
-                            <div>
-                                <label htmlFor="active">active</label>
-                                <input
-                                    type="radio"
-                                    name="display"
-                                    id="active"
-                                    value="active"
-                                    onChange={displayChange}
-                                    checked={display === 'active'} />
-                            </div>
-                            <div>
-                                <label htmlFor="completed">completed</label>
-                                <input
-                                    type="radio"
-                                    name="display"
-                                    id="completed"
-                                    value="completed"
-                                    checked={display === 'completed'}
-                                    onChange={displayChange}
-                                />
-                            </div>
-                        </fieldset>
-                        <button onClick={() => dispatch(deleteManyTodos())}>clear completed</button>
+                        <button className="mobile-btn" onClick={() => dispatch(deleteManyTodos())}>clear completed</button>
                     </div>
-                )
-                    : (<h3>You have not set any todos</h3>)}
-            </section>
+                    <fieldset className="content_radioGroup">
+                        <div>
+                            <label htmlFor="all" className={display === 'all' ? 'checked' : ''}>all</label>
+                            <input
+                                type="radio"
+                                name="display"
+                                id="all"
+                                value="all"
+                                onChange={displayChange}
+                                checked={display === 'all'} />
+                        </div>
+                        <div>
+                            <label htmlFor="active" className={display === 'active' ? 'checked' : ''}>active</label>
+                            <input
+                                type="radio"
+                                name="display"
+                                id="active"
+                                value="active"
+                                onChange={displayChange}
+                                checked={display === 'active'} />
+                        </div>
+                        <div>
+                            <label htmlFor="completed" className={display === 'completed' ? 'checked' : ''}>completed</label>
+                            <input
+                                type="radio"
+                                name="display"
+                                id="completed"
+                                value="completed"
+                                checked={display === 'completed'}
+                                onChange={displayChange}
+                            />
+                        </div>
+                    </fieldset>
+                    <button className="desktop-btn" onClick={() => dispatch(deleteManyTodos())}>clear completed</button>
+                </section>
+            )
+                : (<h3>You have not set any todos</h3>)}
         </>
     )
 }

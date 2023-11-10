@@ -14,17 +14,22 @@ export default function TodoItem({ todo }) {
     }, [todo])
 
     return (
-        <div className='todo'>
-            <label htmlFor="completed" aria-label="completed"></label>
-            {todo.completed ? <h1>True</h1> : <h1>False</h1>}
+        <li className='todoItem'>
+            <label
+                htmlFor="comp"
+                aria-label="completed"
+                className={todo.completed
+                    ? 'todoItem_label todoItem_label-complete'
+                    : 'todoItem_label todoItem_label-active'}
+            ></label>
             <input
                 type="checkbox"
-                id="completed"
+                id="comp"
                 onChange={updateCurrentTodo}
                 checked={todo.completed}
             />
             <p>{todo.text}</p>
             <button onClick={() => dispatch(deleteTodo(todo._id))} className="close">X</button>
-        </div>
+        </li>
     )
 }

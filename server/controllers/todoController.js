@@ -39,8 +39,6 @@ const updateTodos = asyncHandler(async (req, res) => {
         throw new Error('Todo not found')
     }
 
-    console.log(req.user, todo)
-
     // Check for user
     if (!req.user) {
         res.status(401)

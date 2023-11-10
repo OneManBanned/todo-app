@@ -1,9 +1,149 @@
-.todoForm {
-    background-color: red;
+@use '../abstracts/breakpoints' as *;
+@use '../abstracts/theme' as *;
+
+.todo-form {
+    min-height: 3rem;
+    margin-bottom: 1rem;
+    border-radius: .4rem;
+
+    @include themify($themes) {
+        background-color: themed('bgContainer');
+    }
+
+    form {
+        display: flex;
+        min-height: 3rem;
+        width: 100%;
+
+        .formGroup {
+            display: flex;
+            flex-grow: 1;
+            align-items: center;
+
+            &_checkbox {
+                margin-inline: 1rem;
+                min-width: 5%;
+                aspect-ratio: 1;
+                border: thin solid black;
+                border-radius: 50%;
+
+                &-active {
+                    background-color: red;
+                }
+
+                &-complete {
+                    background-color: blue;
+                }
+            }
+
+            [type="checkbox"] {
+                appearance: none;
+            }
+
+            [type="text"] {
+                height: 100%;
+                border: none;
+                display: flex;
+                flex-grow: 1;
+                border-radius: .4rem;
+            }
+        }
+
+    }
+
 }
 
-.todos {
-    background-color: red;
+.content {
+    @include desktop {
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto max-content;
+        grid-template-columns: repeat(3, max-content);
+    }
+
+    .todos {
+
+        &_list {
+            @include desktop {
+                grid-row: 1/2;
+                grid-column: 1/5;
+            }
+
+            .todoItem {
+                display: flex;
+
+                @include themify($themes) {
+                    background-color: themed('bgContainer');
+                }
+
+                &_label {
+                    margin-inline: 1rem;
+                    min-width: 5%;
+                    aspect-ratio: 1;
+                    border: thin solid black;
+                    border-radius: 50%;
+
+                    &-active {
+                        background-color: red;
+                    }
+
+                    &-complete {
+                        background-color: blue;
+                    }
+                }
+
+                [type="checkbox"] {
+                    appearance: none;
+                }
+
+
+                button {
+                    margin-left: auto;
+                }
+            }
+        }
+
+        &_ui {
+            background-color: blue;
+            display: flex;
+            justify-content: space-between;
+
+            .mobile-btn {
+                @include desktop {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &_radioGroup {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-around;
+
+        @include desktop {
+            grid-column: 2/4;
+        }
+
+        div {
+            .checked {
+                color: blue;
+            }
+        }
+
+        div>input {
+            appearance: none;
+        }
+    }
+
+    .desktop-btn {
+        display: none;
+
+        @include desktop {
+            display: block;
+            grid-column: 4/5;
+        }
+    }
 }
 
 .todo {
