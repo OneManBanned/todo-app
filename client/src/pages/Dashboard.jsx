@@ -68,7 +68,7 @@ function Dashboard() {
                     </div>
                     <fieldset className="content_radioGroup">
                         <div>
-                            <label htmlFor="all" className={display === 'all' ? 'checked' : ''}>all</label>
+                            <label htmlFor="all" className={display === 'all' ? 'checked' : 'notChecked'}>all</label>
                             <input
                                 type="radio"
                                 name="display"
@@ -78,7 +78,7 @@ function Dashboard() {
                                 checked={display === 'all'} />
                         </div>
                         <div>
-                            <label htmlFor="active" className={display === 'active' ? 'checked' : ''}>active</label>
+                            <label htmlFor="active" className={display === 'active' ? 'checked' : 'notChecked'}>active</label>
                             <input
                                 type="radio"
                                 name="display"
@@ -88,7 +88,7 @@ function Dashboard() {
                                 checked={display === 'active'} />
                         </div>
                         <div>
-                            <label htmlFor="completed" className={display === 'completed' ? 'checked' : ''}>completed</label>
+                            <label htmlFor="completed" className={display === 'completed' ? 'checked' : 'notChecked'}>completed</label>
                             <input
                                 type="radio"
                                 name="display"

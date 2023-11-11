@@ -287,7 +287,7 @@ h1 {
     width: 100%;
     display: grid;
     grid-template-rows: auto max-content;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(3, auto);
   }
 }
 @media (min-width: 30rem) {
@@ -349,9 +349,35 @@ h1 {
   color: hsl(234, 39%, 85%);
 }
 .content .todos_ui {
-  background-color: blue;
+  min-height: 3rem;
+  padding-left: 1rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+.theme-light .content .todos_ui {
+  background-color: white;
+}
+.theme-dark .content .todos_ui {
+  background-color: hsl(235, 24%, 19%);
+}
+.theme-light .content .todos_ui p {
+  color: hsl(236, 9%, 61%);
+}
+.theme-dark .content .todos_ui p {
+  color: hsl(233, 14%, 35%);
+}
+.content .todos_ui .mobile-btn {
+  border: none;
+  margin-inline-end: 1rem;
+}
+.theme-light .content .todos_ui .mobile-btn {
+  background-color: white;
+  color: hsl(236, 9%, 61%);
+}
+.theme-dark .content .todos_ui .mobile-btn {
+  background-color: hsl(235, 24%, 19%);
+  color: hsl(233, 14%, 35%);
 }
 @media (min-width: 30rem) {
   .content .todos_ui .mobile-btn {
@@ -363,10 +389,31 @@ h1 {
   display: flex;
   justify-content: space-around;
 }
+.theme-light .content_radioGroup {
+  background-color: white;
+}
+.theme-dark .content_radioGroup {
+  background-color: hsl(235, 24%, 19%);
+}
 @media (min-width: 30rem) {
   .content_radioGroup {
+    margin-top: 0;
+    align-items: center;
+    border: none;
     grid-column: 2/4;
   }
+  .theme-light .content_radioGroup {
+    background-color: white;
+  }
+  .theme-dark .content_radioGroup {
+    background-color: hsl(235, 24%, 19%);
+  }
+}
+.theme-light .content_radioGroup div .notChecked {
+  color: hsl(236, 9%, 61%);
+}
+.theme-dark .content_radioGroup div .notChecked {
+  color: hsl(233, 14%, 35%);
 }
 .content_radioGroup div .checked {
   color: blue;
@@ -381,8 +428,21 @@ h1 {
 }
 @media (min-width: 30rem) {
   .content .desktop-btn {
+    border: none;
     display: block;
     grid-column: 4/5;
+  }
+  .theme-light .content .desktop-btn {
+    background-color: white;
+  }
+  .theme-dark .content .desktop-btn {
+    background-color: hsl(235, 24%, 19%);
+  }
+  .theme-light .content .desktop-btn {
+    color: hsl(236, 9%, 61%);
+  }
+  .theme-dark .content .desktop-btn {
+    color: hsl(233, 14%, 35%);
   }
 }
 
