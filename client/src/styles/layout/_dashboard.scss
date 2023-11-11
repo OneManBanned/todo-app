@@ -22,10 +22,14 @@
 
             &_checkbox {
                 margin-inline: 1rem;
-                min-width: 5%;
+                min-width: 1.25rem;
+                width: 5%;
                 aspect-ratio: 1;
-                border: thin solid black;
                 border-radius: 50%;
+
+                @include themify($themes) {
+                    border: themed('border')
+                }
 
                 &-active {
                     background-color: red;
@@ -40,17 +44,21 @@
                 appearance: none;
             }
 
+            [type="text"]::placeholder,
             [type="text"] {
                 height: 100%;
                 border: none;
                 display: flex;
                 flex-grow: 1;
                 border-radius: .4rem;
+
+                @include themify($themes) {
+                    color: themed('text');
+                    background-color: themed('bgContainer');
+                }
             }
         }
-
     }
-
 }
 
 .content {
@@ -71,6 +79,12 @@
 
             .todoItem {
                 display: flex;
+                min-height: 3rem;
+                align-items: center;
+
+                @include themify($themes) {
+                    border-bottom: thin solid themed('borderBottom');
+                }
 
                 @include themify($themes) {
                     background-color: themed('bgContainer');
@@ -78,17 +92,13 @@
 
                 &_label {
                     margin-inline: 1rem;
-                    min-width: 5%;
+                    min-width: 1.5rem;
+                    width: 5%;
                     aspect-ratio: 1;
-                    border: thin solid black;
                     border-radius: 50%;
 
-                    &-active {
-                        background-color: red;
-                    }
-
-                    &-complete {
-                        background-color: blue;
+                    @include themify($themes) {
+                        border: themed('border')
                     }
                 }
 
@@ -96,9 +106,21 @@
                     appearance: none;
                 }
 
+                p {
+                    @include themify($themes) {
+                        color: themed('text');
+                    }
+
+                }
 
                 button {
-                    margin-left: auto;
+                    margin-inline: auto 1rem;
+                    background-color: transparent;
+                    border: none;
+
+                    @include themify($themes) {
+                        color: themed('text');
+                    }
                 }
             }
         }
@@ -159,5 +181,38 @@
         background-color: transparent;
         border: none;
 
+    }
+}
+
+.checkbox {
+
+    &-lightactive {
+        // @include themify($themes) {
+        //     border: thin solid themed('border');
+        //     background: themed('borderBg')
+        // }
+        background: linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+        border: none;
+        position: relative;
+    }
+
+    &-lightactive:after {
+        content: '';
+        position: absolute;
+        width: 90%;
+        border-radius: 50%;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        aspect-ratio: 1;
+        background-color: white;
+
+    }
+
+    &-complete {
+        background: center url('images/icon-check.svg') no-repeat, linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+        border: none;
     }
 }

@@ -226,10 +226,16 @@ h1 {
 }
 .todo-form form .formGroup_checkbox {
   margin-inline: 1rem;
-  min-width: 5%;
+  min-width: 1.25rem;
+  width: 5%;
   aspect-ratio: 1;
-  border: thin solid black;
   border-radius: 50%;
+}
+.theme-light .todo-form form .formGroup_checkbox {
+  border: none;
+}
+.theme-dark .todo-form form .formGroup_checkbox {
+  border: thin solid hsl(234, 11%, 52%);
 }
 .todo-form form .formGroup_checkbox-active {
   background-color: red;
@@ -242,12 +248,38 @@ h1 {
      -moz-appearance: none;
           appearance: none;
 }
+.todo-form form .formGroup [type=text]::-moz-placeholder {
+  height: 100%;
+  border: none;
+  display: flex;
+  flex-grow: 1;
+  border-radius: 0.4rem;
+}
+.todo-form form .formGroup [type=text]::placeholder,
 .todo-form form .formGroup [type=text] {
   height: 100%;
   border: none;
   display: flex;
   flex-grow: 1;
   border-radius: 0.4rem;
+}
+.theme-light .todo-form form .formGroup [type=text]::-moz-placeholder {
+  color: hsl(235, 19%, 35%);
+  background-color: white;
+}
+.theme-light .todo-form form .formGroup [type=text]::placeholder,
+.theme-light .todo-form form .formGroup [type=text] {
+  color: hsl(235, 19%, 35%);
+  background-color: white;
+}
+.theme-dark .todo-form form .formGroup [type=text]::-moz-placeholder {
+  color: hsl(234, 39%, 85%);
+  background-color: hsl(235, 24%, 19%);
+}
+.theme-dark .todo-form form .formGroup [type=text]::placeholder,
+.theme-dark .todo-form form .formGroup [type=text] {
+  color: hsl(234, 39%, 85%);
+  background-color: hsl(235, 24%, 19%);
 }
 
 @media (min-width: 30rem) {
@@ -266,6 +298,14 @@ h1 {
 }
 .content .todos_list .todoItem {
   display: flex;
+  min-height: 3rem;
+  align-items: center;
+}
+.theme-light .content .todos_list .todoItem {
+  border-bottom: thin solid hsl(233, 11%, 84%);
+}
+.theme-dark .content .todos_list .todoItem {
+  border-bottom: thin solid hsl(233, 14%, 35%);
 }
 .theme-light .content .todos_list .todoItem {
   background-color: white;
@@ -275,24 +315,38 @@ h1 {
 }
 .content .todos_list .todoItem_label {
   margin-inline: 1rem;
-  min-width: 5%;
+  min-width: 1.5rem;
+  width: 5%;
   aspect-ratio: 1;
-  border: thin solid black;
   border-radius: 50%;
 }
-.content .todos_list .todoItem_label-active {
-  background-color: red;
+.theme-light .content .todos_list .todoItem_label {
+  border: none;
 }
-.content .todos_list .todoItem_label-complete {
-  background-color: blue;
+.theme-dark .content .todos_list .todoItem_label {
+  border: thin solid hsl(234, 11%, 52%);
 }
 .content .todos_list .todoItem [type=checkbox] {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
 }
+.theme-light .content .todos_list .todoItem p {
+  color: hsl(235, 19%, 35%);
+}
+.theme-dark .content .todos_list .todoItem p {
+  color: hsl(234, 39%, 85%);
+}
 .content .todos_list .todoItem button {
-  margin-left: auto;
+  margin-inline: auto 1rem;
+  background-color: transparent;
+  border: none;
+}
+.theme-light .content .todos_list .todoItem button {
+  color: hsl(235, 19%, 35%);
+}
+.theme-dark .content .todos_list .todoItem button {
+  color: hsl(234, 39%, 85%);
 }
 .content .todos_ui {
   background-color: blue;
@@ -342,5 +396,28 @@ h1 {
   margin-left: auto;
   margin-right: 0.5rem;
   background-color: transparent;
+  border: none;
+}
+
+.checkbox-lightactive {
+  background: linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border: none;
+  position: relative;
+}
+.checkbox-lightactive:after {
+  content: "";
+  position: absolute;
+  width: 90%;
+  border-radius: 50%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  aspect-ratio: 1;
+  background-color: white;
+}
+.checkbox-complete {
+  background: center url("images/icon-check.svg") no-repeat, linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   border: none;
 }/*# sourceMappingURL=index.css.map */

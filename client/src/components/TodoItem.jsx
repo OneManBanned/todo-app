@@ -1,10 +1,11 @@
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { deleteTodo, updateTodo } from "../features/todos/todosSlice"
 
 export default function TodoItem({ todo }) {
 
     const dispatch = useDispatch()
+    const { theme } = useSelector((state) => state.theme)
 
     const updateCurrentTodo = () => {
         dispatch(updateTodo(todo._id))
@@ -16,15 +17,15 @@ export default function TodoItem({ todo }) {
     return (
         <li className='todoItem'>
             <label
-                htmlFor="comp"
+                htmlFor={`completed${todo._id}`}
                 aria-label="completed"
                 className={todo.completed
-                    ? 'todoItem_label todoItem_label-complete'
-                    : 'todoItem_label todoItem_label-active'}
+                    ? 'todoItem_label checkbox-complete'
+                    : `todoItem_label checkbox-${theme}active`}
             ></label>
             <input
                 type="checkbox"
-                id="comp"
+                id={`completed${todo._id}`}
                 onChange={updateCurrentTodo}
                 checked={todo.completed}
             />
