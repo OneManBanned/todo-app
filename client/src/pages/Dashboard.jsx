@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import TodoForm from "../components/TodoForm"
@@ -58,8 +58,8 @@ function Dashboard() {
             {todos.length > 0 ? (
                 <section className="content">
                     <ul className="todos_list">
-                        {currentTodos.map(todo => (
-                            <TodoItem key={todo._id} todo={todo} />
+                        {currentTodos.map((todo) => (
+                            <TodoItem todo={todo} key={todo._id} />
                         ))}
                     </ul>
                     <div className="todos_ui">

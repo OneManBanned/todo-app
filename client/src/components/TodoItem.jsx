@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { deleteTodo, updateTodo } from "../features/todos/todosSlice"
 
 export default function TodoItem({ todo }) {
-
     const dispatch = useDispatch()
     const { theme } = useSelector((state) => state.theme)
 
@@ -15,7 +14,7 @@ export default function TodoItem({ todo }) {
     }, [todo])
 
     return (
-        <li className='todoItem'>
+        <li className='todoItem' draggable="true">
             <label
                 htmlFor={`completed${todo._id}`}
                 aria-label="completed"
