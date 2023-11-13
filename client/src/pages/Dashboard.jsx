@@ -48,6 +48,28 @@ function Dashboard() {
 
     const activeCount = () => todos.filter(todo => !todo.completed).length
 
+    const dragItem = useRef(null)
+    const dragOverItem = useRef(null)
+
+
+    function handleDragEnd(e) {
+        e.preventDefault()
+        handleDragSort()
+    }
+
+    const handleDragSort = () => {
+        let _currentTodos = [...currentTodos]
+
+        const draggedItem = _currentTodos.splice(dragItem.current, 1)[0]
+
+        _currentTodos.splice(dragOverItem.current, 0, draggedItem)
+
+        dragItem.current = null
+        dragOverItem.current = null
+
+        setCurrentTodos(_currentTodos)
+    }
+
     if (isLoading) {
         return <Spinner />
     }
@@ -57,9 +79,17 @@ function Dashboard() {
             <TodoForm />
             {todos.length > 0 ? (
                 <section className="content">
-                    <ul className="todos_list">
-                        {currentTodos.map((todo) => (
-                            <TodoItem todo={todo} key={todo._id} />
+                    <ul className="todos_list"
+                    >
+                        {currentTodos.map((todo, index) => (
+                            <div
+                                key={todo._id} index={index} draggable
+                                onDragStart={(e) => dragItem.current = index}
+                                onDragOver={(e) => dragOverItem.current = index}
+                                onDragEnd={handleDragEnd}
+                            >
+                                <TodoItem todo={todo} />
+                            </div>
                         ))}
                     </ul>
                     <div className="todos_ui">
