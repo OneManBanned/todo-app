@@ -226,13 +226,13 @@ h1 {
 }
 .todo-form form .formGroup_checkbox {
   margin-inline: 1rem;
-  min-width: 1.25rem;
-  width: 5%;
+  min-width: 1.5rem;
+  width: 2%;
   aspect-ratio: 1;
   border-radius: 50%;
 }
 .theme-light .todo-form form .formGroup_checkbox {
-  border: none;
+  border: thin solid hsl(233, 11%, 84%);
 }
 .theme-dark .todo-form form .formGroup_checkbox {
   border: thin solid hsl(234, 11%, 52%);
@@ -282,6 +282,9 @@ h1 {
   background-color: hsl(235, 24%, 19%);
 }
 
+.content {
+  border-radius: 0.4rem;
+}
 @media (min-width: 30rem) {
   .content {
     width: 100%;
@@ -295,6 +298,12 @@ h1 {
     grid-row: 1/2;
     grid-column: 1/5;
   }
+}
+.content .todos_list div:first-of-type {
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+.content .todos_list div:first-of-type li {
+  border-radius: 0.4rem 0.4rem 0 0;
 }
 .content .todos_list .todoItem {
   display: flex;
@@ -316,12 +325,13 @@ h1 {
 .content .todos_list .todoItem_label {
   margin-inline: 1rem;
   min-width: 1.5rem;
-  width: 5%;
+  width: 2%;
   aspect-ratio: 1;
   border-radius: 50%;
+  cursor: pointer;
 }
 .theme-light .content .todos_list .todoItem_label {
-  border: none;
+  border: thin solid hsl(233, 11%, 84%);
 }
 .theme-dark .content .todos_list .todoItem_label {
   border: thin solid hsl(234, 11%, 52%);
@@ -341,6 +351,7 @@ h1 {
   margin-inline: auto 1rem;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 .theme-light .content .todos_list .todoItem button {
   color: hsl(235, 19%, 35%);
@@ -349,6 +360,7 @@ h1 {
   color: hsl(234, 39%, 85%);
 }
 .content .todos_ui {
+  border-radius: 0 0 0.4rem 0.4rem;
   min-height: 3rem;
   padding-left: 1rem;
   display: flex;
@@ -360,6 +372,14 @@ h1 {
 }
 .theme-dark .content .todos_ui {
   background-color: hsl(235, 24%, 19%);
+}
+@media (min-width: 30rem) {
+  .content .todos_ui {
+    border-radius: 0 0 0 0.4rem;
+  }
+}
+.content .todos_ui-empty {
+  border-radius: 0.4rem 0 0 0.4rem;
 }
 .theme-light .content .todos_ui p {
   color: hsl(236, 9%, 61%);
@@ -385,9 +405,14 @@ h1 {
   }
 }
 .content_radioGroup {
+  border-radius: 0.4rem;
+  border: none;
+  height: 3rem;
   margin-top: 1rem;
   display: flex;
+  align-items: center;
   justify-content: space-around;
+  padding-inline: 4rem;
 }
 .theme-light .content_radioGroup {
   background-color: white;
@@ -401,6 +426,8 @@ h1 {
     align-items: center;
     border: none;
     grid-column: 2/4;
+    padding-inline: 0;
+    border-radius: 0;
   }
   .theme-light .content_radioGroup {
     background-color: white;
@@ -418,6 +445,9 @@ h1 {
 .content_radioGroup div .checked {
   color: blue;
 }
+.content_radioGroup div label {
+  cursor: pointer;
+}
 .content_radioGroup div > input {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -426,23 +456,28 @@ h1 {
 .content .desktop-btn {
   display: none;
 }
+.theme-light .content .desktop-btn {
+  color: hsl(236, 9%, 61%);
+}
+.theme-dark .content .desktop-btn {
+  color: hsl(233, 14%, 35%);
+}
 @media (min-width: 30rem) {
   .content .desktop-btn {
-    border: none;
     display: block;
+    border: none;
     grid-column: 4/5;
+    border-radius: 0 0 0.4rem 0;
+    cursor: pointer;
+  }
+  .content .desktop-btn-empty {
+    border-radius: 0 0.4rem 0.4rem 0;
   }
   .theme-light .content .desktop-btn {
     background-color: white;
   }
   .theme-dark .content .desktop-btn {
     background-color: hsl(235, 24%, 19%);
-  }
-  .theme-light .content .desktop-btn {
-    color: hsl(236, 9%, 61%);
-  }
-  .theme-dark .content .desktop-btn {
-    color: hsl(233, 14%, 35%);
   }
 }
 
@@ -459,12 +494,13 @@ h1 {
   border: none;
 }
 
-.checkbox-lightactive {
+.checkbox-lightactive:hover, .checkbox-darkactive:hover {
+  cursor: pointer;
   background: linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   border: none;
   position: relative;
 }
-.checkbox-lightactive:after {
+.checkbox-lightactive:hover:after, .checkbox-darkactive:hover:after {
   content: "";
   position: absolute;
   width: 90%;
@@ -475,9 +511,17 @@ h1 {
   bottom: 0;
   margin: auto;
   aspect-ratio: 1;
+}
+.theme-light .checkbox-lightactive:hover:after, .theme-light .checkbox-darkactive:hover:after {
   background-color: white;
+}
+.theme-dark .checkbox-lightactive:hover:after, .theme-dark .checkbox-darkactive:hover:after {
+  background-color: hsl(235, 24%, 19%);
 }
 .checkbox-complete {
   background: center url("images/icon-check.svg") no-repeat, linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-  border: none;
+  border: none !important;
+}
+.checkbox-complete {
+  cursor: pointer;
 }/*# sourceMappingURL=index.css.map */

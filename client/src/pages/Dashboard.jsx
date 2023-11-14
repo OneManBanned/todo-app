@@ -92,13 +92,15 @@ function Dashboard() {
                             </div>
                         ))}
                     </ul>
-                    <div className="todos_ui">
+                    <div className={currentTodos.length ? 'todos_ui' : 'todos_ui todos_ui-empty'}>
                         <p>{activeCount() == 1 ? `${activeCount()} item left` : `${activeCount()} items left`}</p>
-                        <button className="mobile-btn" onClick={() => dispatch(deleteManyTodos())}>clear completed</button>
+                        <button className="mobile-btn" onClick={() => dispatch(deleteManyTodos())}
+                            disabled={currentTodos.filter(todo => todo.completed).length ? false : true}
+                        >Clear Completed</button>
                     </div>
                     <fieldset className="content_radioGroup">
                         <div>
-                            <label htmlFor="all" className={display === 'all' ? 'checked' : 'notChecked'}>all</label>
+                            <label htmlFor="all" className={display === 'all' ? 'checked' : 'notChecked'}>All</label>
                             <input
                                 type="radio"
                                 name="display"
@@ -108,7 +110,7 @@ function Dashboard() {
                                 checked={display === 'all'} />
                         </div>
                         <div>
-                            <label htmlFor="active" className={display === 'active' ? 'checked' : 'notChecked'}>active</label>
+                            <label htmlFor="active" className={display === 'active' ? 'checked' : 'notChecked'}>Active</label>
                             <input
                                 type="radio"
                                 name="display"
@@ -118,7 +120,7 @@ function Dashboard() {
                                 checked={display === 'active'} />
                         </div>
                         <div>
-                            <label htmlFor="completed" className={display === 'completed' ? 'checked' : 'notChecked'}>completed</label>
+                            <label htmlFor="completed" className={display === 'completed' ? 'checked' : 'notChecked'}>Completed</label>
                             <input
                                 type="radio"
                                 name="display"
@@ -129,7 +131,10 @@ function Dashboard() {
                             />
                         </div>
                     </fieldset>
-                    <button className="desktop-btn" onClick={() => dispatch(deleteManyTodos())}>clear completed</button>
+                    <button onClick={() => dispatch(deleteManyTodos())}
+                        className={currentTodos.length ? 'desktop-btn' : 'desktop-btn desktop-btn-empty'}
+                        disabled={currentTodos.filter(todo => todo.completed).length ? false : true}
+                    >Clear Completed</button>
                 </section>
             )
                 : (<h3>You have not set any todos</h3>)}

@@ -146,10 +146,8 @@ export const todoSlice = createSlice({
                 state.message = action.payload
             })
             .addCase(updateTodo.pending, (state) => {
-                state.isLoading = true
             })
             .addCase(updateTodo.fulfilled, (state, action) => {
-                state.isLoading = false
                 state.isSuccess = true
                 state.todos = state.todos
                     .map((todo) => todo._id === action.payload._id ? action.payload : todo)

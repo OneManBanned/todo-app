@@ -22,8 +22,8 @@
 
             &_checkbox {
                 margin-inline: 1rem;
-                min-width: 1.25rem;
-                width: 5%;
+                min-width: 1.5rem;
+                width: 2%;
                 aspect-ratio: 1;
                 border-radius: 50%;
 
@@ -62,6 +62,8 @@
 }
 
 .content {
+    border-radius: .4rem;
+
     @include desktop {
         width: 100%;
         display: grid;
@@ -77,7 +79,16 @@
                 grid-column: 1/5;
             }
 
+            div:first-of-type {
+                border-radius: .4rem .4rem 0 0;
+
+                li {
+                    border-radius: .4rem .4rem 0 0;
+                }
+            }
+
             .todoItem {
+
                 display: flex;
                 min-height: 3rem;
                 align-items: center;
@@ -93,9 +104,10 @@
                 &_label {
                     margin-inline: 1rem;
                     min-width: 1.5rem;
-                    width: 5%;
+                    width: 2%;
                     aspect-ratio: 1;
                     border-radius: 50%;
+                    cursor: pointer;
 
                     @include themify($themes) {
                         border: themed('border')
@@ -117,6 +129,7 @@
                     margin-inline: auto 1rem;
                     background-color: transparent;
                     border: none;
+                    cursor: pointer;
 
                     @include themify($themes) {
                         color: themed('text');
@@ -126,6 +139,9 @@
         }
 
         &_ui {
+            border-radius: 0 0 .4rem .4rem;
+
+
             @include themify($themes) {
                 background-color: themed('bgContainer');
             }
@@ -136,10 +152,19 @@
             align-items: center;
             justify-content: space-between;
 
+            @include desktop {
+                border-radius: 0 0 0 .4rem;
+            }
+
+            &-empty {
+                border-radius: .4rem 0 0 .4rem;
+            }
+
             p {
                 @include themify($themes) {
                     color: themed('btnText');
                 }
+
             }
 
             .mobile-btn {
@@ -159,9 +184,14 @@
     }
 
     &_radioGroup {
+        border-radius: .4rem;
+        border: none;
+        height: 3rem;
         margin-top: 1rem;
         display: flex;
+        align-items: center;
         justify-content: space-around;
+        padding-inline: 4rem;
 
         @include themify($themes) {
             background-color: themed('bgContainer');
@@ -172,6 +202,8 @@
             align-items: center;
             border: none;
             grid-column: 2/4;
+            padding-inline: 0;
+            border-radius: 0;
 
             @include themify($themes) {
                 background-color: themed('bgContainer');
@@ -188,6 +220,10 @@
             .checked {
                 color: blue;
             }
+
+            label {
+                cursor: pointer;
+            }
         }
 
         div>input {
@@ -198,17 +234,23 @@
     .desktop-btn {
         display: none;
 
+        @include themify($themes) {
+            color: themed('btnText');
+        }
+
         @include desktop {
-            @include themify($themes) {
-                background-color: themed('bgContainer');
+            display: block;
+            border: none;
+            grid-column: 4/5;
+            border-radius: 0 0 .4rem 0;
+            cursor: pointer;
+
+            &-empty {
+                border-radius: 0 .4rem .4rem 0;
             }
 
-            border: none;
-            display: block;
-            grid-column: 4/5;
-
             @include themify($themes) {
-                color: themed('btnText');
+                background-color: themed('bgContainer');
             }
         }
     }
@@ -230,19 +272,23 @@
     }
 }
 
+
 .checkbox {
 
-    &-lightactive {
+    &-lightactive:hover,
+    &-darkactive:hover {
         // @include themify($themes) {
         //     border: thin solid themed('border');
         //     background: themed('borderBg')
-        // }
+        //}
+        cursor: pointer;
         background: linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
         border: none;
         position: relative;
     }
 
-    &-lightactive:after {
+    &-lightactive:hover:after,
+    &-darkactive:hover:after {
         content: '';
         position: absolute;
         width: 90%;
@@ -253,12 +299,19 @@
         bottom: 0;
         margin: auto;
         aspect-ratio: 1;
-        background-color: white;
+
+        @include themify($themes) {
+            background-color: themed('bgContainer');
+        }
 
     }
 
     &-complete {
         background: center url('images/icon-check.svg') no-repeat, linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-        border: none;
+        border: none !important;
+    }
+
+    &-complete {
+        cursor: pointer;
     }
 }

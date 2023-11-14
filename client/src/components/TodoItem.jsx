@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { deleteTodo, updateTodo } from "../features/todos/todosSlice"
+import deleteImg from '/images/icon-cross.svg'
 
 export default function TodoItem({ todo }) {
 
@@ -31,7 +32,9 @@ export default function TodoItem({ todo }) {
                 checked={todo.completed}
             />
             <p>{todo.text}</p>
-            <button onClick={() => dispatch(deleteTodo(todo._id))} className="close">X</button>
+            <button onClick={() => dispatch(deleteTodo(todo._id))} aria-label="delete todo" className="close">
+                <img src={deleteImg} alt="" />
+            </button>
         </li >
     )
 }
