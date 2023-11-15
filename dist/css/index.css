@@ -123,6 +123,11 @@ h1 {
      -moz-appearance: none;
           appearance: none;
 }
+.headerTodo input:focus-visible + label {
+  outline: 4px solid orange;
+  outline-offset: 4px;
+  border-radius: 50%;
+}
 
 .form {
   width: 100%;
@@ -243,6 +248,10 @@ h1 {
 .todo-form form .formGroup_checkbox-complete {
   background-color: blue;
 }
+.todo-form form .formGroup [type=checkbox]:focus-visible + label {
+  outline: 4px solid orange;
+  outline-offset: 3px;
+}
 .todo-form form .formGroup [type=checkbox] {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -254,6 +263,7 @@ h1 {
   display: flex;
   flex-grow: 1;
   border-radius: 0.4rem;
+  outline: none;
 }
 .todo-form form .formGroup [type=text]::placeholder,
 .todo-form form .formGroup [type=text] {
@@ -262,6 +272,7 @@ h1 {
   display: flex;
   flex-grow: 1;
   border-radius: 0.4rem;
+  outline: none;
 }
 .theme-light .todo-form form .formGroup [type=text]::-moz-placeholder {
   color: hsl(235, 19%, 35%);
@@ -284,6 +295,8 @@ h1 {
 
 .content {
   border-radius: 0.4rem;
+  overflow: hidden;
+  white-space: nowrap;
 }
 @media (min-width: 30rem) {
   .content {
@@ -340,6 +353,13 @@ h1 {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+}
+.content .todos_list .todoItem [type=checkbox]:focus-visible + label {
+  outline: 4px solid orange;
+  outline-offset: 3px;
+}
+.content .todos_list .todoItem p {
+  text-overflow: clip;
 }
 .theme-light .content .todos_list .todoItem p {
   color: hsl(235, 19%, 35%);
@@ -479,6 +499,11 @@ h1 {
   .theme-dark .content .desktop-btn {
     background-color: hsl(235, 24%, 19%);
   }
+}
+
+[name=display]:focus-visible + label {
+  outline: 4px solid orange;
+  offset: 4px;
 }
 
 .todo {

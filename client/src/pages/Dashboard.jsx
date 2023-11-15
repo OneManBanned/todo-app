@@ -100,7 +100,6 @@ function Dashboard() {
                     </div>
                     <fieldset className="content_radioGroup">
                         <div>
-                            <label htmlFor="all" className={display === 'all' ? 'checked' : 'notChecked'}>All</label>
                             <input
                                 type="radio"
                                 name="display"
@@ -108,9 +107,9 @@ function Dashboard() {
                                 value="all"
                                 onChange={displayChange}
                                 checked={display === 'all'} />
+                            <label htmlFor="all" className={display === 'all' ? 'checked' : 'notChecked'}>All</label>
                         </div>
                         <div>
-                            <label htmlFor="active" className={display === 'active' ? 'checked' : 'notChecked'}>Active</label>
                             <input
                                 type="radio"
                                 name="display"
@@ -118,9 +117,9 @@ function Dashboard() {
                                 value="active"
                                 onChange={displayChange}
                                 checked={display === 'active'} />
+                            <label htmlFor="active" className={display === 'active' ? 'checked' : 'notChecked'}>Active</label>
                         </div>
                         <div>
-                            <label htmlFor="completed" className={display === 'completed' ? 'checked' : 'notChecked'}>Completed</label>
                             <input
                                 type="radio"
                                 name="display"
@@ -129,6 +128,7 @@ function Dashboard() {
                                 checked={display === 'completed'}
                                 onChange={displayChange}
                             />
+                            <label htmlFor="completed" className={display === 'completed' ? 'checked' : 'notChecked'}>Completed</label>
                         </div>
                     </fieldset>
                     <button onClick={() => dispatch(deleteManyTodos())}

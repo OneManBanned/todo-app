@@ -41,8 +41,17 @@
             }
         }
 
+
+
         input {
             appearance: none;
         }
     }
+
+    input:focus-visible+label {
+        outline: 4px solid orange;
+        outline-offset: 4px;
+        border-radius: 50%;
+    }
+
 }

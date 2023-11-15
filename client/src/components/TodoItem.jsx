@@ -18,6 +18,12 @@ export default function TodoItem({ todo }) {
 
     return (
         <li className='todoItem'>
+            <input
+                type="checkbox"
+                id={`completed${todo._id}`}
+                onChange={updateCurrentTodo}
+                checked={todo.completed}
+            />
             <label
                 htmlFor={`completed${todo._id}`}
                 aria-label="completed"
@@ -25,12 +31,6 @@ export default function TodoItem({ todo }) {
                     ? 'todoItem_label checkbox-complete'
                     : `todoItem_label checkbox-${theme}active`}
             ></label>
-            <input
-                type="checkbox"
-                id={`completed${todo._id}`}
-                onChange={updateCurrentTodo}
-                checked={todo.completed}
-            />
             <p>{todo.text}</p>
             <button onClick={() => dispatch(deleteTodo(todo._id))} aria-label="delete todo" className="close">
                 <img src={deleteImg} alt="" />

@@ -18,11 +18,11 @@ export default function HeaderTodo() {
                     : location.pathname.slice(1)}</Link>
             </h1>
             <div className='darkMode'>
+                <input type="checkbox" id="darkMode"
+                    onClick={() => dispatch(change())} />
                 <label htmlFor="darkMode">
                     <img src={theme === 'light' ? Moon : Sun} alt="" />
                 </label>
-                <input type="checkbox" id="darkMode"
-                    onClick={() => dispatch(change())} />
             </div>
         </header>
     )

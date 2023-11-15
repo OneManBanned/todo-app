@@ -40,6 +40,11 @@
                 }
             }
 
+            [type="checkbox"]:focus-visible+label {
+                outline: 4px solid orange;
+                outline-offset: 3px;
+            }
+
             [type="checkbox"] {
                 appearance: none;
             }
@@ -51,18 +56,22 @@
                 display: flex;
                 flex-grow: 1;
                 border-radius: .4rem;
+                outline: none;
 
                 @include themify($themes) {
                     color: themed('text');
                     background-color: themed('bgContainer');
                 }
             }
+
         }
     }
 }
 
 .content {
     border-radius: .4rem;
+    overflow: hidden;
+    white-space: nowrap;
 
     @include desktop {
         width: 100%;
@@ -118,7 +127,14 @@
                     appearance: none;
                 }
 
+                [type="checkbox"]:focus-visible+label {
+                    outline: 4px solid orange;
+                    outline-offset: 3px;
+                }
+
                 p {
+                    text-overflow: clip;
+
                     @include themify($themes) {
                         color: themed('text');
                     }
@@ -140,7 +156,6 @@
 
         &_ui {
             border-radius: 0 0 .4rem .4rem;
-
 
             @include themify($themes) {
                 background-color: themed('bgContainer');
@@ -229,6 +244,7 @@
         div>input {
             appearance: none;
         }
+
     }
 
     .desktop-btn {
@@ -254,6 +270,11 @@
             }
         }
     }
+}
+
+[name="display"]:focus-visible+label {
+    outline: 4px solid orange;
+    offset: 4px;
 }
 
 .todo {
