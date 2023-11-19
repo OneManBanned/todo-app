@@ -9,4 +9,4 @@ Currently, two official plugins are available:
 
 # Todo-app - todo list
 
-- 
+- first todo
