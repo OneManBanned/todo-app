@@ -70,8 +70,6 @@
 
 .content {
     border-radius: .4rem;
-    overflow: hidden;
-    white-space: nowrap;
 
     @include desktop {
         width: 100%;
@@ -97,8 +95,8 @@
             }
 
             .todoItem {
-
-                display: flex;
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
                 min-height: 3rem;
                 align-items: center;
 
@@ -111,6 +109,7 @@
                 }
 
                 &_label {
+                    grid-column: 1/2;
                     margin-inline: 1rem;
                     min-width: 1.5rem;
                     width: 2%;
@@ -132,17 +131,29 @@
                     outline-offset: 3px;
                 }
 
-                p {
-                    text-overflow: clip;
+                div {
+                    grid-column: 2/3;
+                    background-color: red;
+                    overflow: hidden;
+                    white-space: nowrap;
 
-                    @include themify($themes) {
-                        color: themed('text');
+
+                    p {
+
+                        text-overflow: clip;
+
+
+                        @include themify($themes) {
+                            color: themed('text');
+                        }
+
                     }
-
                 }
 
                 button {
-                    margin-inline: auto 1rem;
+                    justify-self: flex-end;
+                    grid-column: 3/4;
+                    margin-inline: 1rem;
                     background-color: transparent;
                     border: none;
                     cursor: pointer;

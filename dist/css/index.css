@@ -295,8 +295,6 @@ h1 {
 
 .content {
   border-radius: 0.4rem;
-  overflow: hidden;
-  white-space: nowrap;
 }
 @media (min-width: 30rem) {
   .content {
@@ -319,7 +317,8 @@ h1 {
   border-radius: 0.4rem 0.4rem 0 0;
 }
 .content .todos_list .todoItem {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   min-height: 3rem;
   align-items: center;
 }
@@ -336,6 +335,7 @@ h1 {
   background-color: hsl(235, 24%, 19%);
 }
 .content .todos_list .todoItem_label {
+  grid-column: 1/2;
   margin-inline: 1rem;
   min-width: 1.5rem;
   width: 2%;
@@ -358,17 +358,25 @@ h1 {
   outline: 4px solid orange;
   outline-offset: 3px;
 }
-.content .todos_list .todoItem p {
+.content .todos_list .todoItem div {
+  grid-column: 2/3;
+  background-color: red;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.content .todos_list .todoItem div p {
   text-overflow: clip;
 }
-.theme-light .content .todos_list .todoItem p {
+.theme-light .content .todos_list .todoItem div p {
   color: hsl(235, 19%, 35%);
 }
-.theme-dark .content .todos_list .todoItem p {
+.theme-dark .content .todos_list .todoItem div p {
   color: hsl(234, 39%, 85%);
 }
 .content .todos_list .todoItem button {
-  margin-inline: auto 1rem;
+  justify-self: flex-end;
+  grid-column: 3/4;
+  margin-inline: 1rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
