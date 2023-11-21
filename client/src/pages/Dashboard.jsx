@@ -95,7 +95,6 @@ function Dashboard() {
                     <div className={currentTodos.length ? 'todos_ui' : 'todos_ui todos_ui-empty'}>
                         <p>{activeCount() == 1 ? `${activeCount()} item left` : `${activeCount()} items left`}</p>
                         <button className="mobile-btn" onClick={() => dispatch(deleteManyTodos())}
-                            disabled={currentTodos.filter(todo => todo.completed).length ? false : true}
                         >Clear Completed</button>
                     </div>
                     <fieldset className="content_radioGroup">
@@ -133,7 +132,6 @@ function Dashboard() {
                     </fieldset>
                     <button onClick={() => dispatch(deleteManyTodos())}
                         className={currentTodos.length ? 'desktop-btn' : 'desktop-btn desktop-btn-empty'}
-                        disabled={currentTodos.filter(todo => todo.completed).length ? false : true}
                     >Clear Completed</button>
                 </section>
             )

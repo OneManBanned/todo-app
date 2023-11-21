@@ -318,8 +318,8 @@ h1 {
 }
 .content .todos_list .todoItem {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  min-height: 3rem;
+  grid-template-columns: min-content auto min-content;
+  grid-template-rows: 3rem;
   align-items: center;
 }
 .theme-light .content .todos_list .todoItem {
@@ -336,6 +336,7 @@ h1 {
 }
 .content .todos_list .todoItem_label {
   grid-column: 1/2;
+  grid-row: 1/2;
   margin-inline: 1rem;
   min-width: 1.5rem;
   width: 2%;
@@ -360,12 +361,12 @@ h1 {
 }
 .content .todos_list .todoItem div {
   grid-column: 2/3;
-  background-color: red;
+  grid-row: 1/2;
   overflow: hidden;
   white-space: nowrap;
 }
 .content .todos_list .todoItem div p {
-  text-overflow: clip;
+  text-overflow: ellipsis;
 }
 .theme-light .content .todos_list .todoItem div p {
   color: hsl(235, 19%, 35%);
@@ -375,6 +376,7 @@ h1 {
 }
 .content .todos_list .todoItem button {
   justify-self: flex-end;
+  grid-row: 1/2;
   grid-column: 3/4;
   margin-inline: 1rem;
   background-color: transparent;
