@@ -10,3 +10,5 @@ Currently, two official plugins are available:
 # Todo-app - todo list
 
 - spacing at the top of the app
+- show text programatically at the correct length
+- update database on list reorder
