@@ -12,3 +12,4 @@ Currently, two official plugins are available:
 - spacing at the top of the app
 - show text programatically at the correct length
 - update database on list reorder
+- finish stylings
