@@ -35,6 +35,7 @@ export default function todoForm() {
                         name='text'
                         id='text'
                         value={text}
+                        placeholder='Create a new todo...'
                         onChange={(e) => setText(e.target.value)} />
                     <label htmlFor="text" className='todoText' aria-label='add a todo'></label>
                 </div>

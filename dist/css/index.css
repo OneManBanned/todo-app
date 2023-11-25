@@ -44,12 +44,13 @@ h1 {
   flex-direction: column;
   justify-content: center;
   width: 90%;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 @media (min-width: 30rem) {
   .container {
     width: 40%;
     min-width: 29rem;
+    margin-top: 3rem;
   }
 }
 
@@ -209,8 +210,9 @@ h1 {
 }
 
 .todo-form {
+  margin-top: 2rem;
   min-height: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   border-radius: 0.4rem;
 }
 .theme-light .todo-form {
@@ -219,10 +221,20 @@ h1 {
 .theme-dark .todo-form {
   background-color: hsl(235, 24%, 19%);
 }
+@media (min-width: 30rem) {
+  .todo-form {
+    min-height: 4rem;
+  }
+}
 .todo-form form {
   display: flex;
   min-height: 3rem;
   width: 100%;
+}
+@media (min-width: 30rem) {
+  .todo-form form {
+    min-height: 4rem;
+  }
 }
 .todo-form form .formGroup {
   display: flex;
@@ -264,6 +276,7 @@ h1 {
   flex-grow: 1;
   border-radius: 0.4rem;
   outline: none;
+  font-size: 1.25rem;
 }
 .todo-form form .formGroup [type=text]::placeholder,
 .todo-form form .formGroup [type=text] {
@@ -273,6 +286,7 @@ h1 {
   flex-grow: 1;
   border-radius: 0.4rem;
   outline: none;
+  font-size: 1.25rem;
 }
 .theme-light .todo-form form .formGroup [type=text]::-moz-placeholder {
   color: hsl(235, 19%, 35%);
@@ -334,6 +348,11 @@ h1 {
 .theme-dark .content .todos_list .todoItem {
   background-color: hsl(235, 24%, 19%);
 }
+@media (min-width: 30rem) {
+  .content .todos_list .todoItem {
+    grid-template-rows: 4rem;
+  }
+}
 .content .todos_list .todoItem_label {
   grid-column: 1/2;
   grid-row: 1/2;
@@ -365,14 +384,24 @@ h1 {
   overflow: hidden;
   white-space: nowrap;
 }
-.content .todos_list .todoItem div p {
+.content .todos_list .todoItem div .para {
   text-overflow: ellipsis;
+  font-size: 1.25rem;
 }
-.theme-light .content .todos_list .todoItem div p {
+.theme-light .content .todos_list .todoItem div .para {
   color: hsl(235, 19%, 35%);
 }
-.theme-dark .content .todos_list .todoItem div p {
+.theme-dark .content .todos_list .todoItem div .para {
   color: hsl(234, 39%, 85%);
+}
+.content .todos_list .todoItem div .para-complete {
+  text-decoration: line-through;
+}
+.theme-light .content .todos_list .todoItem div .para-complete {
+  color: hsl(233, 11%, 84%);
+}
+.theme-dark .content .todos_list .todoItem div .para-complete {
+  color: hsl(234, 11%, 52%);
 }
 .content .todos_list .todoItem button {
   justify-self: flex-end;

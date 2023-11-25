@@ -6,11 +6,12 @@
     flex-direction: column;
     justify-content: center;
     width: 90%;
-    margin-top: 3rem;
+    margin-top: 1rem;
 
     @include desktop {
         width: 40%;
         min-width: 29rem;
+        margin-top: 3rem;
     }
 
 }

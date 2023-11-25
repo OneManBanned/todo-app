@@ -32,7 +32,7 @@ export default function TodoItem({ todo }) {
                     : `todoItem_label checkbox-${theme}active`}
             ></label>
             <div>
-                <p>{todo.text}</p>
+                <p className={todo.completed ? 'para para-complete' : 'para'}>{todo.text}</p>
             </div>
             <button onClick={() => dispatch(deleteTodo(todo._id))} aria-label="delete todo" className="close">
                 <img src={deleteImg} alt="" />

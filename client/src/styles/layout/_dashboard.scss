@@ -2,18 +2,27 @@
 @use '../abstracts/theme' as *;
 
 .todo-form {
+    margin-top: 2rem;
     min-height: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     border-radius: .4rem;
 
     @include themify($themes) {
         background-color: themed('bgContainer');
     }
 
+    @include desktop {
+        min-height: 4rem;
+    }
+
     form {
         display: flex;
         min-height: 3rem;
         width: 100%;
+
+        @include desktop {
+            min-height: 4rem;
+        }
 
         .formGroup {
             display: flex;
@@ -57,6 +66,7 @@
                 flex-grow: 1;
                 border-radius: .4rem;
                 outline: none;
+                font-size: 1.25rem;
 
                 @include themify($themes) {
                     color: themed('text');
@@ -108,6 +118,10 @@
                     background-color: themed('bgContainer');
                 }
 
+                @include desktop {
+                    grid-template-rows: 4rem;
+                }
+
                 &_label {
                     grid-column: 1/2;
                     grid-row: 1/2;
@@ -139,13 +153,22 @@
                     white-space: nowrap;
 
 
-                    p {
+                    .para {
                         text-overflow: ellipsis;
+                        font-size: 1.25rem;
 
                         @include themify($themes) {
                             color: themed('text');
                         }
 
+                        &-complete {
+                            text-decoration: line-through;
+
+                            @include themify($themes) {
+                                color: themed('textComplete');
+                            }
+
+                        }
                     }
                 }
 
