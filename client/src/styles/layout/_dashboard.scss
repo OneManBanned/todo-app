@@ -31,10 +31,14 @@
 
             &_checkbox {
                 margin-inline: 1rem;
-                min-width: 1.5rem;
+                min-width: 1.25rem;
                 width: 2%;
                 aspect-ratio: 1;
                 border-radius: 50%;
+
+                @include desktop {
+                    min-width: 1.5rem;
+                }
 
                 @include themify($themes) {
                     border: themed('border')
@@ -66,7 +70,10 @@
                 flex-grow: 1;
                 border-radius: .4rem;
                 outline: none;
-                font-size: 1.25rem;
+
+                @include desktop {
+                    font-size: 1.25rem;
+                }
 
                 @include themify($themes) {
                     color: themed('text');
@@ -126,14 +133,17 @@
                     grid-column: 1/2;
                     grid-row: 1/2;
                     margin-inline: 1rem;
-                    min-width: 1.5rem;
-                    width: 2%;
+                    min-width: 1.25rem;
                     aspect-ratio: 1;
                     border-radius: 50%;
                     cursor: pointer;
 
                     @include themify($themes) {
                         border: themed('border')
+                    }
+
+                    @include desktop {
+                        min-width: 1.5rem;
                     }
                 }
 
@@ -155,7 +165,11 @@
 
                     .para {
                         text-overflow: ellipsis;
-                        font-size: 1.25rem;
+                        font-size: .8rem;
+
+                        @include desktop {
+                            font-size: 1.25rem;
+                        }
 
                         @include themify($themes) {
                             color: themed('text');
@@ -180,10 +194,13 @@
                     background-color: transparent;
                     border: none;
                     cursor: pointer;
+                    display: flex;
+                    background-color: red;
 
                     @include themify($themes) {
                         color: themed('text');
                     }
+
                 }
             }
         }
