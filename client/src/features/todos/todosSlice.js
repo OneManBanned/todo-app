@@ -85,6 +85,22 @@ export const updateTodo = createAsyncThunk('todos/update', async (id, thunkAPI) 
     }
 })
 
+// Update Many Todos
+export const updateManyTodos = createAsyncThunk('todos/updateMany', async (id, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        return await todoService.updateManyTodos(token)
+    } catch (error) {
+        const message = (error.response
+            && error.response.data
+            && error.response.data.message)
+            || error.message || error.toString()
+        // thinkAPI.rejectWithValue sends message as payload
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+
 export const todoSlice = createSlice({
     name: 'todo',
     initialState,
@@ -153,6 +169,17 @@ export const todoSlice = createSlice({
                     .map((todo) => todo._id === action.payload._id ? action.payload : todo)
             })
             .addCase(updateTodo.rejected, (state, action) => {
+                state.isLoading = false
+                state.Error = true
+                state.message = action.payload
+            })
+            .addCase(updateManyTodos.pending, (state) => {
+            })
+            .addCase(updateManyTodos.fulfilled, (state, action) => {
+                state.isSuccess = true
+                state.todos = action.payload
+            })
+            .addCase(updateManyTodos.rejected, (state, action) => {
                 state.isLoading = false
                 state.Error = true
                 state.message = action.payload

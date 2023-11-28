@@ -56,11 +56,47 @@ const updateTodos = asyncHandler(async (req, res) => {
         {
             text: todo.text,
             completed: !todo.completed,
-            _id: req.params.id
+            _id: req.params.id,
+            index: todo.index
         },
         { new: true, })
 
     res.status(200).json(updatedTodo)
+})
+
+const updateManyTodos = asyncHandler(async (req, res) => {
+    console.log(req)
+
+    // const todo = await Todo.findById(req.params.id)
+
+    // if (!todo) {
+    //     res.status(400)
+    //     throw new Error('Todo not found')
+    // }
+
+    // // Check for user
+    // if (!req.user) {
+    //     res.status(401)
+    //     throw new Error('User not found')
+    // }
+
+    // // Make sure the logged in the user matches the goal user
+    // if (todo.user.toString() !== req.user.id) {
+    //     res.status(401)
+    //     throw new Error('User not authorized')
+    // }
+
+    // const updatedTodo = await Todo.findByIdAndUpdate(
+    //     req.params.id,
+    //     {
+    //         text: todo.text,
+    //         completed: !todo.completed,
+    //         _id: req.params.id,
+    //         index: todo.index
+    //     },
+    //     { new: true, })
+
+    // res.status(200).json(updatedTodo)
 })
 
 // @desc    Delete todos
@@ -107,6 +143,7 @@ module.exports = {
     getTodos,
     setTodos,
     updateTodos,
+    updateManyTodos,
     deleteTodos,
     deleteManyTodos
 }

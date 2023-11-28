@@ -13,7 +13,12 @@ const todoSchema = mongoose.Schema({
     completed: {
         type: Boolean,
         require: true,
+    },
+    index: {
+        type: Number,
+        require: true
     }
+
 }, {
     timestamps: true,
 })

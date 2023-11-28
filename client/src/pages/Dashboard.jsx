@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import TodoForm from "../components/TodoForm"
 import Spinner from '../components/Spinner'
 import TodoItem from "../components/TodoItem"
-import { reset, getTodos, deleteManyTodos } from '../features/todos/todosSlice'
+import { reset, getTodos, deleteManyTodos, updateManyTodos } from '../features/todos/todosSlice'
 
 function Dashboard() {
 

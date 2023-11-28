@@ -62,12 +62,25 @@ const updateTodo = async (id, token) => {
     return response.data
 }
 
+const updateManyTodos = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    }
+
+    const response = await axios.put(API_URL, {}, config)
+
+    return response.data
+}
+
 const todoService = {
     createTodo,
     getTodos,
     deleteTodo,
     deleteManyTodos,
-    updateTodo
+    updateTodo,
+    updateManyTodos
 }
 
 export default todoService

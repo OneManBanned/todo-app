@@ -81,6 +81,7 @@ h1 {
 .headerUser ul button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .headerTodo {
@@ -281,6 +282,7 @@ h1 {
   flex-grow: 1;
   border-radius: 0.4rem;
   outline: none;
+  caret-color: blue;
 }
 .todo-form form .formGroup [type=text]::placeholder,
 .todo-form form .formGroup [type=text] {
@@ -290,6 +292,7 @@ h1 {
   flex-grow: 1;
   border-radius: 0.4rem;
   outline: none;
+  caret-color: blue;
 }
 @media (min-width: 30rem) {
   .todo-form form .formGroup [type=text]::-moz-placeholder {
@@ -321,6 +324,7 @@ h1 {
 
 .content {
   border-radius: 0.4rem;
+  margin-block-end: 2rem;
 }
 @media (min-width: 30rem) {
   .content {
@@ -403,6 +407,7 @@ h1 {
 .content .todos_list .todoItem div .para {
   text-overflow: ellipsis;
   font-size: 0.8rem;
+  cursor: pointer;
 }
 @media (min-width: 30rem) {
   .content .todos_list .todoItem div .para {
@@ -433,13 +438,20 @@ h1 {
   border: none;
   cursor: pointer;
   display: flex;
-  background-color: red;
 }
 .theme-light .content .todos_list .todoItem button {
   color: hsl(235, 19%, 35%);
 }
 .theme-dark .content .todos_list .todoItem button {
   color: hsl(234, 39%, 85%);
+}
+.content .todos_list .todoItem button img {
+  width: 0.75rem;
+}
+@media (min-width: 30rem) {
+  .content .todos_list .todoItem button img {
+    width: 1rem;
+  }
 }
 .content .todos_ui {
   border-radius: 0 0 0.4rem 0.4rem;
@@ -525,7 +537,7 @@ h1 {
   color: hsl(233, 14%, 35%);
 }
 .content_radioGroup div .checked {
-  color: blue;
+  color: rgb(73, 73, 209);
 }
 .content_radioGroup div label {
   cursor: pointer;
