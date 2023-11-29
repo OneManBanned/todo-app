@@ -8,6 +8,7 @@ export default function TodoItem({ todo }) {
     const dispatch = useDispatch()
     const { theme } = useSelector((state) => state.theme)
 
+
     const updateCurrentTodo = () => {
         dispatch(updateTodo(todo._id))
     }

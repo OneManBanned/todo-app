@@ -14,11 +14,6 @@ const todoSchema = mongoose.Schema({
         type: Boolean,
         require: true,
     },
-    index: {
-        type: Number,
-        require: true
-    }
-
 }, {
     timestamps: true,
 })
