@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const Todo = require('../models/todoModel')
 
+
 // @desc    Get todos
 // @route   GET /
 // @access  Private
@@ -65,7 +66,6 @@ const updateTodos = asyncHandler(async (req, res) => {
 })
 
 const updateManyTodos = asyncHandler(async (req, res) => {
-    console.log(req)
 
     // const todo = await Todo.findById(req.params.id)
 
