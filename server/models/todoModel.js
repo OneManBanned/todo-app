@@ -14,6 +14,10 @@ const todoSchema = mongoose.Schema({
         type: Boolean,
         require: true,
     },
+    order: {
+        type: Number,
+        require: true,
+    }
 }, {
     timestamps: true,
 })

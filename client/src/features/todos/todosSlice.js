@@ -86,10 +86,10 @@ export const updateTodo = createAsyncThunk('todos/update', async (id, thunkAPI) 
 })
 
 // Update Many Todos
-export const updateManyTodos = createAsyncThunk('todos/updateMany', async (id, thunkAPI) => {
+export const updateManyTodos = createAsyncThunk('todos/updateMany', async (todosData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await todoService.updateManyTodos(token)
+        return await todoService.updateManyTodos(todosData, token)
     } catch (error) {
         const message = (error.response
             && error.response.data

@@ -6,7 +6,7 @@ const Todo = require('../models/todoModel')
 // @route   GET /
 // @access  Private
 const getTodos = asyncHandler(async (req, res) => {
-    const todos = await Todo.find({ user: req.user.id })
+    const todos = await Todo.find({ user: req.user.id }).sort({ order: 1 })
     res.status(200).json({ todos })
 })
 
@@ -19,13 +19,17 @@ const setTodos = asyncHandler(async (req, res) => {
         throw new Error('Please add a text field')
     }
 
+    const todos = await Todo.find({ user: req.user.id }).sort({ order: -1 })
+    const nextIndex = todos[0] ? todos[0].order + 1 : 0
+
     const todo = await Todo.create({
         text: req.body.text,
         completed: req.body.completed,
         user: req.user.id,
+        order: nextIndex
     })
-    res.status(200).json(todo)
 
+    res.status(200).json(todo)
 })
 
 // @desc    Update todos
@@ -58,7 +62,7 @@ const updateTodos = asyncHandler(async (req, res) => {
             text: todo.text,
             completed: !todo.completed,
             _id: req.params.id,
-            index: todo.index
+            order: todo.order
         },
         { new: true, })
 
@@ -66,37 +70,20 @@ const updateTodos = asyncHandler(async (req, res) => {
 })
 
 const updateManyTodos = asyncHandler(async (req, res) => {
+    console.log(req.body)
 
-    // const todo = await Todo.findById(req.params.id)
 
-    // if (!todo) {
-    //     res.status(400)
-    //     throw new Error('Todo not found')
-    // }
-
-    // // Check for user
-    // if (!req.user) {
-    //     res.status(401)
-    //     throw new Error('User not found')
-    // }
-
-    // // Make sure the logged in the user matches the goal user
-    // if (todo.user.toString() !== req.user.id) {
-    //     res.status(401)
-    //     throw new Error('User not authorized')
-    // }
-
-    // const updatedTodo = await Todo.findByIdAndUpdate(
-    //     req.params.id,
-    //     {
-    //         text: todo.text,
-    //         completed: !todo.completed,
-    //         _id: req.params.id,
-    //         index: todo.index
-    //     },
-    //     { new: true, })
-
-    // res.status(200).json(updatedTodo)
+    req.body.map((todo, index) => {
+        await Todo.findByIdAndUpdate(
+            todo._id,
+            {
+                text: todo.text,
+                completed: !todo.completed,
+                _id: req.params.id,
+                order: index
+            },
+            { new: true, })
+    })
 })
 
 // @desc    Delete todos

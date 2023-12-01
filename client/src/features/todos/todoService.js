@@ -62,14 +62,14 @@ const updateTodo = async (id, token) => {
     return response.data
 }
 
-const updateManyTodos = async (token) => {
+const updateManyTodos = async (todosData, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
         },
     }
 
-    const response = await axios.put(API_URL, {}, config)
+    const response = await axios.put(API_URL, todosData, config)
 
     return response.data
 }

@@ -46,8 +46,6 @@ function Dashboard() {
         activeCount()
     }, [display, todos])
 
-    console.log(todos)
-
     const activeCount = () => todos.filter(todo => !todo.completed).length
 
     const dragItem = useRef(null)
@@ -64,10 +62,9 @@ function Dashboard() {
         const draggedItem = _currentTodos.splice(dragItem.current, 1)[0]
 
         _currentTodos.splice(dragOverItem.current, 0, draggedItem)
-
+        dispatch(updateManyTodos(_currentTodos))
         dragItem.current = null
         dragOverItem.current = null
-
         setCurrentTodos(_currentTodos)
     }
 
