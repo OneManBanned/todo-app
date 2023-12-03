@@ -70,15 +70,16 @@ const updateTodos = asyncHandler(async (req, res) => {
 
 const updateManyTodos = asyncHandler(async (req, res) => {
 
-    const todos = await Todo.find({ user: req.user.id })
+    if (!req.user) {
+        res.status(401)
+        throw new Error('User not found')
+    }
 
-    const orderedTodos = req.body
-
-    orderedTodo.map((todo, index) => {
-        Todo.findByIdAndUpdate(todo._id, { order: index })
-    })
-
-    // console.log(todos)
+    let index = 0
+    for (const todo of req.body) {
+        await Todo.findByIdAndUpdate({ _id: todo._id }, { order: index })
+        index++
+    }
 })
 
 // @desc    Delete todos
