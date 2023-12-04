@@ -62,7 +62,7 @@ function Dashboard() {
         const draggedItem = _currentTodos.splice(dragItem.current, 1)[0]
 
         _currentTodos.splice(dragOverItem.current, 0, draggedItem)
-        dispatch(updateManyTodos(_currentTodos))
+        if (display === 'all') dispatch(updateManyTodos(_currentTodos))
         dragItem.current = null
         dragOverItem.current = null
         setCurrentTodos(_currentTodos)
