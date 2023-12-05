@@ -13,3 +13,4 @@ Currently, two official plugins are available:
 - show text programatically at the correct length
 - update database on list reorder
 - finish stylings of todo app
+- completed
