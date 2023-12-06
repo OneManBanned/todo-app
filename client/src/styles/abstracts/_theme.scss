@@ -1,7 +1,7 @@
 // ### Light Theme
 $themes: (
-    light: (bgImgDesktop: 'images/bg-desktop-light.jpg',
-        bgImgMobile: 'images/bg-mobile-light.jpg',
+    light: (bgImgDesktop: '/images/bg-desktop-light.jpg',
+        bgImgMobile: '/images/bg-mobile-light.jpg',
         bg: hsl(0, 0%, 98%),
         bgContainer: white,
         border: thin solid hsl(233, 11%, 84%),
@@ -12,8 +12,8 @@ $themes: (
         text: hsl(235, 19%, 35%),
 
     ),
-    dark: (bgImgDesktop: 'images/bg-desktop-dark.jpg',
-        bgImgMobile: 'images/bg-mobile-dark.jpg',
+    dark: (bgImgDesktop: '/images/bg-desktop-dark.jpg',
+        bgImgMobile: '/images/bg-mobile-dark.jpg',
         bg: hsl(235, 21%, 11%),
         bgContainer: hsl(235, 24%, 19%),
         text: hsl(234, 39%, 85%),

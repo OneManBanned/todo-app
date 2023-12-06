@@ -25,17 +25,17 @@ h1 {
   min-height: 100vh;
 }
 .theme-light .background {
-  background: top/100% hsl(0, 0%, 98%) url("images/bg-mobile-light.jpg") no-repeat;
+  background: top/100% hsl(0, 0%, 98%) url("/images/bg-mobile-light.jpg") no-repeat;
 }
 .theme-dark .background {
-  background: top/100% hsl(235, 21%, 11%) url("images/bg-mobile-dark.jpg") no-repeat;
+  background: top/100% hsl(235, 21%, 11%) url("/images/bg-mobile-dark.jpg") no-repeat;
 }
 @media (min-width: 30rem) {
   .theme-light .background {
-    background: top/100% hsl(0, 0%, 98%) url("images/bg-desktop-light.jpg") no-repeat;
+    background: top/100% hsl(0, 0%, 98%) url("/images/bg-desktop-light.jpg") no-repeat;
   }
   .theme-dark .background {
-    background: top/100% hsl(235, 21%, 11%) url("images/bg-desktop-dark.jpg") no-repeat;
+    background: top/100% hsl(235, 21%, 11%) url("/images/bg-desktop-dark.jpg") no-repeat;
   }
 }
 
@@ -618,7 +618,7 @@ h1 {
   background-color: hsl(235, 24%, 19%);
 }
 .checkbox-complete {
-  background: center url("images/icon-check.svg") no-repeat, linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background: center url("/images/icon-check.svg") no-repeat, linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   border: none !important;
 }
 .checkbox-complete {

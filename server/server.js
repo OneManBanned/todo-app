@@ -15,6 +15,16 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/app/todos', require('./routes/todoRoutes'))
 app.use('/app/users', require('./routes/userRoutes'))
 
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')))
+
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../', 'client', 'dist', 'index.html')))
+} else {
+    app.get('/', (req, res) =>
+        res.send('Please set to production'))
+}
+
 app.use(errorHandler)
 
 app.listen(port, () => {
