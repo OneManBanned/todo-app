@@ -90,6 +90,10 @@
     border-radius: .4rem;
     margin-block-end: min(2rem);
 
+    @include themify($themes) {
+        box-shadow: 0rem 1rem 2rem themed('shadow');
+    }
+
     @include desktop {
         width: 100%;
         display: grid;

@@ -147,7 +147,7 @@ h1 {
   margin-bottom: 1rem;
 }
 .theme-light .form input {
-  box-shadow: 0px 10px 25px hsla(236, 33%, 92%, 0.25);
+  box-shadow: 0px 10px 25px hsla(236, 33%, 92%, 0.75);
 }
 .theme-dark .form input {
   box-shadow: 0px 10px 25px none;
@@ -198,7 +198,7 @@ h1 {
 }
 .theme-light .form button {
   color: hsl(236, 9%, 61%);
-  box-shadow: 0px 10px 25px hsla(236, 33%, 92%, 0.25);
+  box-shadow: 0px 10px 25px hsla(236, 33%, 92%, 0.75);
 }
 .theme-dark .form button {
   color: hsl(233, 14%, 35%);
@@ -325,6 +325,12 @@ h1 {
 .content {
   border-radius: 0.4rem;
   margin-block-end: 2rem;
+}
+.theme-light .content {
+  box-shadow: 0rem 1rem 2rem hsla(236, 33%, 92%, 0.75);
+}
+.theme-dark .content {
+  box-shadow: 0rem 1rem 2rem none;
 }
 @media (min-width: 30rem) {
   .content {
