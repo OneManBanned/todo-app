@@ -80,6 +80,9 @@ const updateManyTodos = asyncHandler(async (req, res) => {
         await Todo.findByIdAndUpdate({ _id: todo._id }, { order: index })
         index++
     }
+
+    const todos = await Todo.find({ user: req.user.id }).sort({ order: 1 })
+    res.status(200).json(todos)
 })
 
 // @desc    Delete todos

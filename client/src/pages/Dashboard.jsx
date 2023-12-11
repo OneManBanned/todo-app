@@ -46,7 +46,7 @@ function Dashboard() {
         activeCount()
     }, [display, todos])
 
-    const activeCount = () => todos.filter(todo => !todo.completed).length
+    const activeCount = () => currentTodos.filter(todo => !todo.completed).length
 
     const dragItem = useRef(null)
     const dragOverItem = useRef(null)
